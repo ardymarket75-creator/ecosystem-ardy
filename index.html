@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem Idiomas - MVP</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            text-align: center;
+        }
+        .tag {
+            display: inline-block;
+            background: #eef2f7;
+            color: #5c6bc0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .frase-objetivo {
+            font-size: 1.8rem;
+            color: #1a237e;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        .idioma-soporte {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .label {
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .texto-soporte {
+            font-size: 1.2rem;
+            color: #424242;
+        }
+        .hebreo {
+            direction: rtl;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.5rem;
+            color: #0d47a1;
+        }
+        .fonetica {
+            font-style: italic;
+            color: #616161;
+            font-size: 1rem;
+            margin-top: 4px;
+            display: block;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+            gap: 15px;
+        }
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-prev {
+            background-color: #e0e0e0;
+            color: #424242;
+        }
+        .btn-prev:hover { background-color: #d5d5d5; }
+        .btn-next {
+            background-color: #3949ab;
+            color: white;
+        }
+        .btn-next:hover { background-color: #283593; }
+        .error-msg {
+            color: #c62828;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="categoria-tag" class="tag">Cargando...</div>
+        
+        <div class="label">Idioma Objetivo (Inglés)</div>
+        <div id="frase-target" class="frase-objetivo">...</div>
+        
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+        
+        <div class="idioma-soporte">
+            <span class="label">Español</span>
+            <div id="trans-es" class="texto-soporte">...</div>
+        </div>
+        
+        <div class="idioma-soporte">
+            <span class="label">Hebreo</span>
+            <div id="trans-he" class="texto-soporte hebreo">...</div>
+            <div id="fonetica-he" class="fonetica">...</div>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="btn-prev" onclick="cambiarFrase(-1)">Anterior</button>
+            <button class="btn-next" onclick="cambiarFrase(1)">Siguiente</button>
+        </div>
+        
+        <div id="error-block" class="error-msg"></div>
+    </div>
+
+    <script>
+        let frases = [];
+        let indiceActual = 0;
+
+        // Función para cargar las frases desde el archivo JSON
+        async function cargarFrases() {
+            try {
+                const respuesta = await fetch('frases.json');
+                if (!respuesta.ok) {
+                    throw new Error('No se pudo abrir el archivo frases.json. Asegúrate de que esté en la misma carpeta.');
+                }
+                frases = await respuesta.json();
+                if (frases.length > 0) {
+                    mostrarFrase(indiceActual);
+                } else {
+                    mostrarError('El archivo frases.json está vacío.');
+                }
+            } catch (error) {
+                mostrarError(error.message);
+            }
+        }
+
+        // Función para pintar la frase actual en la pantalla
+        function mostrarFrase(index) {
+            const item = frases[index];
+            
+            // Categoría
+            document.getElementById('categoria-tag').innerText = item.categoria.join(' / ');
+            
+            // Idioma Objetivo (Inglés)
+            document.getElementById('frase-target').innerText = item.idioma_objetivo.frase_completa;
+            
+            // Buscar traducciones de soporte
+            const soporteEs = item.idiomas_soporte.find(lang => lang.codigo === 'es');
+            const soporteHe = item.idiomas_soporte.find(lang => lang.codigo === 'he');
+            
+            // Mostrar Español
+            document.getElementById('trans-es').innerText = soporteEs ? soporteEs.frase_traduccion : 'No disponible';
+            
+            // Mostrar Hebreo y su fonética
+            if (soporteHe) {
+                document.getElementById('trans-he').innerText = soporteHe.frase_traduccion;
+                document.getElementById('fonetica-he').innerText = soporteHe.transliteracion ? `"${soporteHe.transliteracion}"` : '';
+            } else {
+                document.getElementById('trans-he').innerText = 'No disponible';
+                document.getElementById('fonetica-he').innerText = '';
+            }
+        }
+
+        // Función para navegar entre las frases
+        function cambiarFrase(direccion) {
+            if (frases.length === 0) return;
+            
+            indiceActual += direccion;
+            
+            // Evitar salirnos de los límites del arreglo
+            if (indiceActual < 0) {
+                indiceActual = frases.length - 1; // Da la vuelta al final
+            } else if (indiceActual >= frases.length) {
+                indiceActual = 0; // Regresa al principio
+            }
+            
+            mostrarFrase(indiceActual);
+        }
+
+        function mostrarError(mensaje) {
+            const errorBlock = document.getElementById('error-block');
+            errorBlock.innerText = mensaje;
+            errorBlock.style.display = 'block';
+        }
+
+        // Arrancar la carga automáticamente al abrir la página
+        window.onload = cargarFrases;
+    </script>
+</body>
+</html>

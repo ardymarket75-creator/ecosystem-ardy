@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "categoria": ["rutina_mañana", "espiritualidad"],
+    "rango_recurrencia": 1,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "Thank God for a new day",
+      "palabra_oculta": "day",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Gracias a Dios por un nuevo día",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "ברוך ה' על יום חדש",
+        "transliteracion": "Baruch Hashem al yom chadash",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 2,
+    "categoria": ["rutina_mañana", "espiritualidad"],
+    "rango_recurrencia": 2,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "I am going to do Netilat Yadayim before starting the day",
+      "palabra_oculta": "Netilat Yadayim",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Voy a hacer Netilat Yadayim antes de comenzar el día",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "אני הולך ליטול ידיים לפני תחילת היום",
+        "transliteracion": "Ani holech litol yadayim lifnei tchilath hayom",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 3,
+    "categoria": ["rutina_mañana", "espiritualidad"],
+    "rango_recurrencia": 3,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "I am going to dress and get ready for tefilah",
+      "palabra_oculta": "tefilah",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Voy a vestirme y prepararme para la tefilá",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "אני הולך להתלבש ולהתכונן לתפילה",
+        "transliteracion": "Ani holech lehitlabesh ulehitkonen latfilah",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 4,
+    "categoria": ["familia", "conversacion_cotidiana"],
+    "rango_recurrencia": 4,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "Good morning, love. Did you sleep well",
+      "palabra_oculta": "sleep",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Buenos días, amor. ¿Dormiste bien?",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "בוקר טוב, אהובי. ישנת טוב?",
+        "transliteracion": "Boker tov, ahuvi. Yashanta tov?",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 5,
+    "categoria": ["familia", "conversacion_cotidiana"],
+    "rango_recurrencia": 5,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "I hope you have an excellent day",
+      "palabra_oculta": "excellent",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Espero que tengas un día excelente",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "אני מקווה שיהיה לך יום מצוין",
+        "transliteracion": "Ani mekaveh sheyihyeh lecha yom metzuyan",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 6,
+    "categoria": ["rutina_mañana", "espiritualidad"],
+    "rango_recurrencia": 6,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "I am going to pray Shacharit before going to work",
+      "palabra_oculta": "Shacharit",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Voy a rezar Shajarit antes de ir al trabajo",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "אני הולך להתפלל שחרית לפני ההליכה לעבודה",
+        "transliteracion": "Ani holech lehitpalel Shacharit lifnei hahalichah laavodah",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 7,
+    "categoria": ["trabajo", "organizacion"],
+    "rango_recurrencia": 7,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "I need to check my schedule for today",
+      "palabra_oculta": "schedule",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Necesito revisar mi agenda para hoy",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "אני צריך לבדוק את לוח הזמנים שלי להיום",
+        "transliteracion": "Ani tzarich livdok et luach hazmanim sheli lehayom",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 8,
+    "categoria": ["trabajo"],
+    "rango_recurrencia": 8,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "Today I have several important meetings",
+      "palabra_oculta": "meetings",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Hoy tengo varias reuniones importantes",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "היום יש לי כמה פגישות חשובות",
+        "transliteracion": "Hayom yesh li kamah pgishot chashuvot",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 9,
+    "categoria": ["familia", "tareas_hogar"],
+    "rango_recurrencia": 9,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "Don't forget to do the shopping when you have time",
+      "palabra_oculta": "shopping",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "No olvides hacer las compras cuando tengas tiempo",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "אל תשכח לעשות קניות כשיהיה לך זמן",
+        "transliteracion": "Al tishkach laasot kniyot ksheyihyeh lecha zman",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  },
+  {
+    "id": 10,
+    "categoria": ["familia", "espiritualidad"],
+    "rango_recurrencia": 10,
+    "idioma_objetivo": {
+      "codigo": "en",
+      "nombre": "Inglés",
+      "frase_completa": "May God be with you throughout the day",
+      "palabra_oculta": "throughout",
+      "audio_frase_url": "",
+      "audios_por_palabra": {},
+      "sincronizacion_audio": []
+    },
+    "idiomas_soporte": [
+      {
+        "codigo": "es",
+        "nombre": "Español",
+        "frase_traduccion": "Que Dios te acompañe durante todo el día",
+        "audio_url": ""
+      },
+      {
+        "codigo": "he",
+        "nombre": "Hebreo",
+        "frase_traduccion": "שאלוהים יהיה איתך לאורך כל היום",
+        "transliteracion": "She'Elohim yihyeh itcha le'orech kol hayom",
+        "audio_url": ""
+      }
+    ],
+    "ayuda_pronunciacion": { "palabras_dificiles": [] },
+    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
+  }
+]
