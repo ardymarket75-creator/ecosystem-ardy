@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosistema de Idiomas - Pro UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+        }
+        .card { 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            width: 90%; 
+            max-width: 450px; 
+            padding: 40px; 
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        .contador { font-size: 13px; color: #aaa; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; }
+        
+        /* Contenedor de Idioma Objetivo */
+        .target-lang { min-height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .target-en { font-size: 28px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+        
+        .divider { height: 2px; background: #f0f0f0; margin: 30px 0; border-radius: 2px; }
+        
+        /* CONTROLES CENTRALIZADOS */
+        .controls-row { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 25px; 
+            margin: -15px 0 30px 0; /* Lo subimos un poco para que abrace la línea */
+        }
+        
+        .btn-nav { 
+            background: #f8f9fa; 
+            color: #555; 
+            border: 2px solid #eee; 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+        .btn-nav:hover { background: #e9ecef; border-color: #ddd; color: #000; }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .btn-play { 
+            background: #27ae60; 
+            color: white; 
+            border: none; 
+            width: 65px; 
+            height: 65px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            font-size: 24px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn-play:hover { transform: scale(1.05); background: #2ecc71; }
+        .btn-play.playing { background: #e67e22; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); }
+
+        /* Idiomas de Soporte */
+        .support-section { min-height: 150px; display: flex; flex-direction: column; justify-content: center; gap: 15px; }
+        .lang-es { font-size: 19px; color: #444; font-weight: 400; }
+        .lang-he { font-size: 26px; color: #6c5ce7; font-weight: bold; direction: rtl; }
+        .lang-he-trans { font-size: 15px; color: #95a5a6; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="contador" id="contador">Cargando...</div>
+
+        <div class="target-lang">
+            <div class="target-en" id="texto-en">...</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="controls-row">
+            <button class="btn-nav" id="btn-ant" onclick="cambiarFrase(-1)" title="Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button class="btn-play" id="btn-play" onclick="toggleAudio()" title="Reproducir">
+                <i class="fas fa-play" id="play-icon"></i>
+            </button>
+
+            <button class="btn-nav" id="btn-sig" onclick="cambiarFrase(1)" title="Siguiente">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="support-section">
+            <div class="lang-es" id="texto-es"></div>
+            <div class="lang-he" id="texto-he"></div>
+            <div class="lang-he-trans" id="texto-trans"></div>
+        </div>
+    </div>
+
+    <script>
+        let frases = [];
+        let indiceActual = 0;
+        let isPlaying = false;
+
+        fetch('frases.json')
+            .then(response => response.json())
+            .then(data => {
+                frases = data;
+                mostrarFrase(indiceActual);
+            });
+
+        function mostrarFrase(indice) {
+            if(frases.length === 0) return;
+            const frase = frases[indice];
+
+            document.getElementById('texto-en').innerText = frase.idioma_objetivo.frase_completa;
+            document.getElementById('texto-es').innerText = frase.idiomas_soporte[0].frase_traduccion;
+            document.getElementById('texto-he').innerText = frase.idiomas_soporte[1].frase_traduccion;
+            document.getElementById('texto-trans').innerText = frase.idiomas_soporte[1].transliteracion;
+            document.getElementById('contador').innerText = `Frase ${indice + 1} de ${frases.length}`;
+
+            document.getElementById('btn-ant').disabled = (indice === 0);
+            document.getElementById('btn-sig').disabled = (indice === frases.length - 1);
+            
+            // Si cambiamos de frase, detenemos el audio visualmente
+            resetAudioState();
+        }
+
+        function cambiarFrase(direccion) {
+            indiceActual += direccion;
+            mostrarFrase(indiceActual);
+        }
+
+        function toggleAudio() {
+            const btn = document.getElementById('btn-play');
+            const icon = document.getElementById('play-icon');
+            isPlaying = !isPlaying;
+
+            if(isPlaying) {
+                btn.classList.add('playing');
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+                // Aquí irá el código para sonar el mp3
+            } else {
+                resetAudioState();
+            }
+        }
+
+        function resetAudioState() {
+            const btn = document.getElementById('btn-play');
+            const icon = document.getElementById('play-icon');
+            isPlaying = false;
+            btn.classList.remove('playing');
+            icon.classList.remove('fa-pause');
+            icon.classList.add('fa-play');
+        }
+    </script>
+</body>
+</html>
