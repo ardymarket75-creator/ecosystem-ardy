@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<FLVCoreCuePoints Version="1">
+
+  <CuePoint>
+    <Time>2036</Time>
+    <Type>event</Type>
+    <Name>Marker 01</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>5232</Time>
+    <Type>event</Type>
+    <Name>Marker 02</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>7820</Time>
+    <Type>event</Type>
+    <Name>Marker 03</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>10601</Time>
+    <Type>event</Type>
+    <Name>Marker 04</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>12662</Time>
+    <Type>event</Type>
+    <Name>Marker 05</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>15803</Time>
+    <Type>event</Type>
+    <Name>Marker 06</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>17900</Time>
+    <Type>event</Type>
+    <Name>Marker 07</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>19888</Time>
+    <Type>event</Type>
+    <Name>Marker 08</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>22328</Time>
+    <Type>event</Type>
+    <Name>Marker 09</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>24525</Time>
+    <Type>event</Type>
+    <Name>Marker 10</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>26823</Time>
+    <Type>event</Type>
+    <Name>Marker 11</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>29786</Time>
+    <Type>event</Type>
+    <Name>Marker 12</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>32270</Time>
+    <Type>event</Type>
+    <Name>Marker 13</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>34345</Time>
+    <Type>event</Type>
+    <Name>Marker 14</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>36785</Time>
+    <Type>event</Type>
+    <Name>Marker 15</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>39080</Time>
+    <Type>event</Type>
+    <Name>Marker 16</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>42057</Time>
+    <Type>event</Type>
+    <Name>Marker 17</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>44383</Time>
+    <Type>event</Type>
+    <Name>Marker 18</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>45719</Time>
+    <Type>event</Type>
+    <Name>Marker 19</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>47867</Time>
+    <Type>event</Type>
+    <Name>Marker 20</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>49769</Time>
+    <Type>event</Type>
+    <Name>Marker 21</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>51949</Time>
+    <Type>event</Type>
+    <Name>Marker 22</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>54411</Time>
+    <Type>event</Type>
+    <Name>Marker 23</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>56485</Time>
+    <Type>event</Type>
+    <Name>Marker 24</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>58581</Time>
+    <Type>event</Type>
+    <Name>Marker 25</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>61165</Time>
+    <Type>event</Type>
+    <Name>Marker 26</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>62833</Time>
+    <Type>event</Type>
+    <Name>Marker 27</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>64453</Time>
+    <Type>event</Type>
+    <Name>Marker 28</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>65655</Time>
+    <Type>event</Type>
+    <Name>Marker 29</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>67771</Time>
+    <Type>event</Type>
+    <Name>Marker 30</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>69363</Time>
+    <Type>event</Type>
+    <Name>Marker 31</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>71500</Time>
+    <Type>event</Type>
+    <Name>Marker 32</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>73474</Time>
+    <Type>event</Type>
+    <Name>Marker 33</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>75873</Time>
+    <Type>event</Type>
+    <Name>Marker 34</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>77792</Time>
+    <Type>event</Type>
+    <Name>Marker 35</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>79986</Time>
+    <Type>event</Type>
+    <Name>Marker 36</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>82127</Time>
+    <Type>event</Type>
+    <Name>Marker 37</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>84443</Time>
+    <Type>event</Type>
+    <Name>Marker 38</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>86896</Time>
+    <Type>event</Type>
+    <Name>Marker 39</Name>
+  </CuePoint>
+
+  <CuePoint>
+    <Time>89208</Time>
+    <Type>event</Type>
+    <Name>Marker 41</Name>
+  </CuePoint>
+
+</FLVCoreCuePoints>
