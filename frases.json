@@ -10,7 +10,7 @@
       "palabra_oculta": "God",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [0.0, 2.036]
     },
     "idiomas_soporte": [
       {
@@ -41,7 +41,7 @@
       "palabra_oculta": "Yadayim",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [2.036, 5.232]
     },
     "idiomas_soporte": [
       {
@@ -68,11 +68,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am going to get dressed and prepare for the tefilah",
+      "frase_completa": "I am going to get dressed and prepare for tefilah",
       "palabra_oculta": "tefilah",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [5.232, 7.820]
     },
     "idiomas_soporte": [
       {
@@ -99,11 +99,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "Good morning, my love. Did you sleep well?",
+      "frase_completa": "Good morning, honey. Did you sleep well?",
       "palabra_oculta": "sleep",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [7.820, 10.601]
     },
     "idiomas_soporte": [
       {
@@ -134,7 +134,7 @@
       "palabra_oculta": "excellent",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [10.601, 12.662]
     },
     "idiomas_soporte": [
       {
@@ -165,7 +165,7 @@
       "palabra_oculta": "Shacharit",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [12.662, 15.803]
     },
     "idiomas_soporte": [
       {
@@ -196,7 +196,7 @@
       "palabra_oculta": "schedule",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [15.803, 17.900]
     },
     "idiomas_soporte": [
       {
@@ -223,11 +223,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "Today I have several important meetings",
+      "frase_completa": "I have a few important meetings today",
       "palabra_oculta": "meetings",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [17.900, 19.888]
     },
     "idiomas_soporte": [
       {
@@ -258,7 +258,7 @@
       "palabra_oculta": "shopping",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [19.888, 22.328]
     },
     "idiomas_soporte": [
       {
@@ -289,7 +289,7 @@
       "palabra_oculta": "throughout",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [22.328, 24.525]
     },
     "idiomas_soporte": [
       {
@@ -316,11 +316,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "The traffic is a bit heavy this morning",
+      "frase_completa": "The traffic is a little heavy this morning",
       "palabra_oculta": "heavy",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [24.525, 26.823]
     },
     "idiomas_soporte": [
       {
@@ -347,11 +347,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am going to listen to a Torah class during the commute",
+      "frase_completa": "I am going to listen to a Torah class on my way to work",
       "palabra_oculta": "commute",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [26.823, 29.786]
     },
     "idiomas_soporte": [
       {
@@ -378,11 +378,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I hope to arrive at the office on time",
+      "frase_completa": "I hope I can make it to the office on time",
       "palabra_oculta": "office",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [29.786, 32.270]
     },
     "idiomas_soporte": [
       {
@@ -409,11 +409,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I have a lot of work to do today",
+      "frase_completa": "I have a lot of work to get through today.",
       "palabra_oculta": "work",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [32.270, 34.345]
     },
     "idiomas_soporte": [
       {
@@ -440,11 +440,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "First I am going to check my emails",
+      "frase_completa": "First, I am going to check my emails",
       "palabra_oculta": "emails",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [34.345, 36.785]
     },
     "idiomas_soporte": [
       {
@@ -475,7 +475,7 @@
       "palabra_oculta": "clients",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [36.785, 39.080]
     },
     "idiomas_soporte": [
       {
@@ -506,7 +506,7 @@
       "palabra_oculta": "requires",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [39.080, 42.057]
     },
     "idiomas_soporte": [
       {
@@ -533,11 +533,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "Thank God, everything is moving forward well",
+      "frase_completa": "Thank God, everything is going well",
       "palabra_oculta": "moving",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [42.057, 44.383]
     },
     "idiomas_soporte": [
       {
@@ -568,7 +568,7 @@
       "palabra_oculta": "lunch",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [44.383, 45.719]
     },
     "idiomas_soporte": [
       {
@@ -595,11 +595,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am going to say the beracha before eating",
+      "frase_completa": "I am going to say the blessing before I eat",
       "palabra_oculta": "beracha",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [45.719, 47.867]
     },
     "idiomas_soporte": [
       {
@@ -626,11 +626,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "This food is very good",
+      "frase_completa": "This food is really good",
       "palabra_oculta": "food",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [47.867, 49.769]
     },
     "idiomas_soporte": [
       {
@@ -657,11 +657,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I need to go back to work after lunch",
+      "frase_completa": "I need to get back to work after lunch",
       "palabra_oculta": "lunch",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [49.769, 51.949]
     },
     "idiomas_soporte": [
       {
@@ -692,7 +692,7 @@
       "palabra_oculta": "Mincha",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [51.949, 54.411]
     },
     "idiomas_soporte": [
       {
@@ -719,11 +719,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "The afternoon is passing very quickly",
+      "frase_completa": "The afternoon is flying by",
       "palabra_oculta": "quickly",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [54.411, 56.485]
     },
     "idiomas_soporte": [
       {
@@ -750,11 +750,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I still have some pending tasks",
+      "frase_completa": "I still have a few things left to do",
       "palabra_oculta": "pending",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [56.485, 58.581]
     },
     "idiomas_soporte": [
       {
@@ -781,11 +781,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I hope to finish everything before heading home",
+      "frase_completa": "I hope to finish everything before I head home",
       "palabra_oculta": "heading",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [58.581, 61.165]
     },
     "idiomas_soporte": [
       {
@@ -812,11 +812,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am already on my way home",
+      "frase_completa": "I am on my way home now",
       "palabra_oculta": "way",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [61.165, 62.833]
     },
     "idiomas_soporte": [
       {
@@ -843,11 +843,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am happy to see you again",
+      "frase_completa": "I am so happy to see you",
       "palabra_oculta": "happy",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [62.833, 64.453]
     },
     "idiomas_soporte": [
       {
@@ -878,7 +878,7 @@
       "palabra_oculta": "was",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [64.453, 65.655]
     },
     "idiomas_soporte": [
       {
@@ -909,7 +909,7 @@
       "palabra_oculta": "everything",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [65.655, 67.771]
     },
     "idiomas_soporte": [
       {
@@ -940,7 +940,7 @@
       "palabra_oculta": "dinner",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [67.771, 69.363]
     },
     "idiomas_soporte": [
       {
@@ -967,11 +967,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I like sharing this moment with you",
+      "frase_completa": "I like sharing this time with you",
       "palabra_oculta": "sharing",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [69.363, 71.500]
     },
     "idiomas_soporte": [
       {
@@ -998,11 +998,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am going to study a little Torah tonight",
+      "frase_completa": "I am going to study some Torah tonight",
       "palabra_oculta": "study",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [71.500, 73.474]
     },
     "idiomas_soporte": [
       {
@@ -1029,11 +1029,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "Afterwards, I am going to pray Arvit",
+      "frase_completa": "After that, I am going to pray Arvit",
       "palabra_oculta": "Arvit",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [73.474, 75.873]
     },
     "idiomas_soporte": [
       {
@@ -1060,11 +1060,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "We have a lot to be grateful for",
+      "frase_completa": "We have so much to be thankful for",
       "palabra_oculta": "grateful",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [75.873, 77.792]
     },
     "idiomas_soporte": [
       {
@@ -1091,11 +1091,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "I am going to prepare everything for tomorrow",
+      "frase_completa": "I am going to get everything ready for tomorrow",
       "palabra_oculta": "prepare",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [77.792, 79.986]
     },
     "idiomas_soporte": [
       {
@@ -1126,7 +1126,7 @@
       "palabra_oculta": "productive",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [79.986, 82.127]
     },
     "idiomas_soporte": [
       {
@@ -1157,7 +1157,7 @@
       "palabra_oculta": "blessings",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [82.127, 84.443]
     },
     "idiomas_soporte": [
       {
@@ -1184,11 +1184,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "May we have a peaceful and restful night",
+      "frase_completa": "I hope we have a peaceful and restful night",
       "palabra_oculta": "peaceful",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [84.443, 86.896]
     },
     "idiomas_soporte": [
       {
@@ -1215,11 +1215,11 @@
     "idioma_objetivo": {
       "codigo": "en",
       "nombre": "Inglés",
-      "frase_completa": "Good night, my love. Sleep well",
+      "frase_completa": "Good night, honey. Sleep well",
       "palabra_oculta": "night",
       "audio_frase_url": "",
       "audios_por_palabra": {},
-      "sincronizacion_audio": []
+      "sincronizacion_audio": [86.896, 89.208]
     },
     "idiomas_soporte": [
       {
@@ -1233,37 +1233,6 @@
         "nombre": "Hebreo",
         "frase_traduccion": "לילה טוב, אהובי. תישן טוב",
         "transliteracion": "L\u00e1ila t\u00f3v, ahuv\u00ed. Tish\u00e1n t\u00f3v",
-        "audio_url": ""
-      }
-    ],
-    "ayuda_pronunciacion": { "palabras_dificiles": [] },
-    "sistema_repeticion": { "nivel_fibonacci": 1, "proximo_repaso": "" }
-  },
-  {
-    "id": 41,
-    "categoria": ["rutina_noche", "espiritualidad"],
-    "rango_recurrencia": 41,
-    "idioma_objetivo": {
-      "codigo": "en",
-      "nombre": "Inglés",
-      "frase_completa": "See you tomorrow, with God's help",
-      "palabra_oculta": "tomorrow",
-      "audio_frase_url": "",
-      "audios_por_palabra": {},
-      "sincronizacion_audio": []
-    },
-    "idiomas_soporte": [
-      {
-        "codigo": "es",
-        "nombre": "Español",
-        "frase_traduccion": "Nos vemos mañana, con la ayuda de Dios.",
-        "audio_url": ""
-      },
-      {
-        "codigo": "he",
-        "nombre": "Hebreo",
-        "frase_traduccion": "נתראה מחר, בעזרת ה'",
-        "transliteracion": "Nitra\u00e9 mach\u00e1r, beezr\u00e1t Hash\u00e9m",
         "audio_url": ""
       }
     ],

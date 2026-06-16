@@ -119,13 +119,18 @@
         let frases = [];
         let indiceActual = 0;
         let isPlaying = false;
+        let timerAudio; // Controlador de tiempo
+        
+        // Carga del audio principal
+        const audioGeneral = new Audio('audios/en_milo_rvcr_P1_v1.mp3'); 
 
         fetch('frases.json')
             .then(response => response.json())
             .then(data => {
                 frases = data;
                 mostrarFrase(indiceActual);
-            });
+            })
+            .catch(error => console.error("Error conectando a la base:", error));
 
         function mostrarFrase(indice) {
             if(frases.length === 0) return;
@@ -139,12 +144,12 @@
 
             document.getElementById('btn-ant').disabled = (indice === 0);
             document.getElementById('btn-sig').disabled = (indice === frases.length - 1);
-            
-            // Si cambiamos de frase, detenemos el audio visualmente
-            resetAudioState();
         }
 
         function cambiarFrase(direccion) {
+            // Si el usuario cambia manualmente, detenemos el auto-play
+            if (isPlaying) toggleAudio(); 
+            
             indiceActual += direccion;
             mostrarFrase(indiceActual);
         }
@@ -152,25 +157,54 @@
         function toggleAudio() {
             const btn = document.getElementById('btn-play');
             const icon = document.getElementById('play-icon');
+            
             isPlaying = !isPlaying;
 
             if(isPlaying) {
                 btn.classList.add('playing');
-                icon.classList.remove('fa-play');
-                icon.classList.add('fa-pause');
-                // Aquí irá el código para sonar el mp3
+                icon.classList.replace('fa-play', 'fa-pause');
+                reproducirSecuencia();
             } else {
-                resetAudioState();
+                detenerTodo();
             }
         }
 
-        function resetAudioState() {
+        // LÓGICA DE FASE 1: AUTO-AVANCE CONTINUO
+        function reproducirSecuencia() {
+            if (!isPlaying) return;
+
+            const tiempos = frases[indiceActual].idioma_objetivo.sincronizacion_audio;
+            const duracion = (tiempos[1] - tiempos[0]) * 1000;
+
+            audioGeneral.currentTime = tiempos[0];
+            audioGeneral.play();
+            
+            // Esperamos que termine el fragmento
+            timerAudio = setTimeout(() => {
+                // Si hay más frases, avanzamos y seguimos reproduciendo
+                if (indiceActual < frases.length - 1) {
+                    indiceActual++;
+                    mostrarFrase(indiceActual);
+                    reproducirSecuencia(); 
+                } else {
+                    // Terminamos toda la lista
+                    detenerTodo(); 
+                }
+            }, duracion);
+        }
+
+        function detenerTodo() {
             const btn = document.getElementById('btn-play');
             const icon = document.getElementById('play-icon');
+            
             isPlaying = false;
+            audioGeneral.pause();
+            clearTimeout(timerAudio); // Matamos el temporizador
+            
             btn.classList.remove('playing');
-            icon.classList.remove('fa-pause');
-            icon.classList.add('fa-play');
+            if (icon.classList.contains('fa-pause')) {
+                icon.classList.replace('fa-pause', 'fa-play');
+            }
         }
     </script>
 </body>

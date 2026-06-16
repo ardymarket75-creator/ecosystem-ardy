@@ -5,8 +5,17 @@ Este archivo registra las configuraciones exactas utilizadas en las plataformas 
 ## 🌐 Idioma: Inglés (Target)
 
 | Archivo Final | Plataforma | Actor / Voz | Configuración Específica | Fecha | Estado / Notas |
+Formato para: 
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `en_hombre_revoicer_P1_v1.mp3` | Revoicer | "David" (US Mature) | Velocidad: 1.0x <br>Tono: Profesional / Serio <br>Pausas: 1.5s manuales entre líneas. | 14/06/2026 | **Activo.** Sonido limpio, buena cadencia en frases largas. |
+| `en_milo_rvcr_P1_v1.mp3` | Revoicer = rvcr | "Milo" (English - US - Playful yet polished, perfect for animated characters, family-friendly storytelling, and lively cartoon adventures.) | Velocidad: 1.0x <br>Tono: Profesional / Serio <br>Pausas: 1.5s manuales entre líneas. | 16/06/2026 | **Activo.** Sonido limpio, buena cadencia en frases largas. |
+
+
+
+
+
+
+
+
 | `en_hombre_clone_v1.mp3` | CloneVoice.ai | Clon Propio (Actor 1) | Estilo: Narrativo <br>Bloque de texto continuo. Sin pausas forzadas. | 14/06/2026 | **Prueba.** Flujo más rápido, requiere ajustar timestamps de forma más ajustada. |
 
 ---
