@@ -10,10 +10,16 @@
     <h1>¡Bienvenido a Hardyglot!</h1>
     <p>Has iniciado sesión correctamente.</p>
     <script>
-        // Verificamos si hay sesión activa
-        if (!localStorage.getItem('supabase.auth.token')) {
-            window.location.href = 'index.html';
-        }
+        // Usamos el evento de estado de autenticación de Supabase
+        window.supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_IN' || session) {
+                // Usuario autenticado, se queda en el dashboard
+                console.log("Sesión confirmada");
+            } else {
+                // No hay sesión, manda a index
+                window.location.href = 'index.html';
+            }
+        });
     </script>
 </body>
 
