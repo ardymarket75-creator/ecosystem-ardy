@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ardylingo - Tu camino a la fluidez</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; }
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        .cta-button { padding: 15px 30px; background: #27ae60; color: white; border-radius: 10px; text-decoration: none; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <h1>Bienvenido a Ardylingo</h1>
+    <p>Domina idiomas explorando mundos personalizados.</p>
+    <br>
+    <a href="login.html" class="cta-button">Acceder al Laboratorio</a>
+    <script>
+        // 1. Configuración de Supabase (Reemplaza con tus valores reales)
+        const supabaseUrl = 'TU_PROJECT_URL_AQUI';
+        const supabaseKey = 'TU_ANON_KEY_AQUI';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    
+        // 2. Lógica de "Invitado con memoria"
+        function getTempId() {
+            let tempId = localStorage.getItem('ardylingo_temp_id');
+            if (!tempId) {
+                // Crea un ID aleatorio si no existe
+                tempId = 'temp_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('ardylingo_temp_id', tempId);
+            }
+            return tempId;
+        }
+    
+        const currentTempId = getTempId();
+        console.log("El usuario está navegando como:", currentTempId);
+    </script>
+</body>
+</html>

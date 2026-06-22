@@ -109,27 +109,12 @@
             display: none;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
-    <script>
-        async function checkAuth() {
-            const { data } = await window.supabase.auth.getSession();
-            if (!data.session) {
-                window.location.href = 'login.html';
-            }
-        }
-        checkAuth();
-    </script>
 </head>
 
 <body>
     <div class="card">
-        <button class="btn-config" onclick="document.getElementById('modal').style.display='flex'" title="Configuración"><i class="fas fa-cog"></i></button>
-        <button onclick="cerrarSesion()"
-            style="position: absolute; top: 20px; left: 20px; cursor: pointer; border: none; background: none; font-size: 18px; color: #e74c3c;"
-            title="Cerrar sesión">
-            <i class="fas fa-sign-out-alt"></i>
-        </button>
+        <button class="btn-config" onclick="document.getElementById('modal').style.display='flex'"><i
+                class="fas fa-cog"></i></button>
         <div class="contador" id="contador">Cargando...</div>
 
         <div id="block-en">
@@ -179,27 +164,19 @@
             <button onclick="toggleElement('block-he')">Hebreo</button>
             <button onclick="toggleElement('texto-trans')">Transliteración</button>
 
-            <p><strong>Repeticiones:</strong></p>
-            Inglés: <input type="number" value="5" min="1"
-                onchange="AudioEngine.sessionConfig.reps.en = parseInt(this.value)"><br>
-            Hebreo: <input type="number" value="5" min="1"
-                onchange="AudioEngine.sessionConfig.reps.he = parseInt(this.value)"><br>
-            Español: <input type="number" value="1" min="1"
-                onchange="AudioEngine.sessionConfig.reps.es = parseInt(this.value)">
-
-            <p><strong>Silencios (segundos):</strong></p>
-            Inglés: <input type="number" id="gap-en" step="0.1" min="0"
-                onchange="AudioEngine.sessionConfig.silenceGap.en = parseFloat(this.value)"><br>
-            Hebreo: <input type="number" id="gap-he" step="0.1" min="0"
-                onchange="AudioEngine.sessionConfig.silenceGap.he = parseFloat(this.value)"><br>
-            Español: <input type="number" id="gap-es" step="0.1" min="0"
-                onchange="AudioEngine.sessionConfig.silenceGap.es = parseFloat(this.value)">
-
+            <p><strong>Repeticiones por secuencia:</strong></p>
+            <select id="reps-config" onchange="configs.reps = parseInt(this.value)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5" selected>5</option>
+                <option value="8">8</option>
+            </select>
             <br><br>
             <button onclick="document.getElementById('modal').style.display='none'">Cerrar</button>
         </div>
     </div>
-    <script src="js/engine.js"></script>
+
     <script>
         let frasesActivas = [], indice = 0, isPlaying = false, configs = { reps: 5 };
         let progreso = { en: 0, es: 0, he: 0 };
@@ -223,6 +200,32 @@
             document.getElementById('texto-trans').style.display = 'none';
         });
 
+        function incrementarEstrella(lang) {
+            progreso[lang] = (progreso[lang] + 1) % 8;
+            let container = document.getElementById('stars-' + lang);
+            container.innerHTML = '★'.repeat(progreso[lang]) + '☆'.repeat(7 - progreso[lang]);
+        }
+
+        async function reproducirSecuencia() {
+            for (let r = 0; r < configs.reps; r++) {
+                if (!isPlaying) break;
+                // Secuencia: EN -> ES -> HE
+                const secuencia = [
+                    { l: 'en', t: frasesActivas[indice].idioma_objetivo.sincronizacion_audio },
+                    { l: 'es', t: frasesActivas[indice].idiomas_soporte[0].sincronizacion_audio },
+                    { l: 'he', t: frasesActivas[indice].idiomas_soporte[1].sincronizacion_audio }
+                ];
+                for (let item of secuencia) {
+                    if (!isPlaying) break;
+                    let a = audios[item.l];
+                    a.currentTime = item.t[0]; a.play();
+                    await new Promise(res => setTimeout(res, (item.t[1] - item.t[0]) * 1000));
+                    a.pause();
+                    incrementarEstrella(item.l);
+                }
+            }
+        }
+
         function toggleElement(id) {
             const el = document.getElementById(id);
             // Si no tiene un display definido o está en 'none', lo mostramos, si no, lo ocultamos
@@ -235,57 +238,24 @@
 
         function marcarDominada() { frasesActivas.splice(indice, 1); indice = 0; actualizarUI(); }
         function cambiarFrase(d) { indice = (indice + d + frasesActivas.length) % frasesActivas.length; actualizarUI(); }
-        async function toggleAudio(forzarInicio = false) {
-            // Si forzamos inicio (auto-play), no cambiamos el estado isPlaying global
-            if (!forzarInicio) {
-                isPlaying = !isPlaying;
-                document.getElementById('btn-play').innerText = isPlaying ? "| |" : "▶";
-            }
+        function toggleAudio() {
+            isPlaying = !isPlaying;
             const btn = document.getElementById('btn-play');
+            const icon = document.getElementById('play-icon');
 
+            // Cambiar visualmente el botón
             if (isPlaying) {
                 btn.classList.add('playing');
-                AudioEngine.playSequence(frasesActivas[indice], audios, (lang, esFin) => {
-                    incrementarEstrella(lang, esFin);
-                });
+                icon.className = 'fas fa-pause'; // Cambia el icono a PAUSA
+                reproducirSecuencia();
             } else {
                 btn.classList.remove('playing');
-                btn.innerText = "▶";
-                AudioEngine.isPlaying = false;
-                Object.values(audios).forEach(a => { a.pause(); a.currentTime = 0; });
-            }
-        }
-        function incrementarEstrella(lang, esSetCompletado = false) {
-            if (esSetCompletado) {
-                progreso[lang] = (progreso[lang] + 1) % 8;
-                let container = document.getElementById('stars-' + lang);
-                if (container) {
-                    container.innerHTML = '★'.repeat(progreso[lang]) + '☆'.repeat(7 - progreso[lang]);
-                }
-            } else {
-                console.log(`Reproducción individual en ${lang}`);
-            }
-        }
-
-        window.addEventListener('fraseCompletada', () => {
-            if (isPlaying) {
-                AudioEngine.stepIndex = 0;
-                AudioEngine.repIndex = 0;
-                cambiarFrase(1);
-                setTimeout(() => toggleAudio(true), 1000);
-            }
-        });
-        // Sincronizar valores de silencio desde el motor a la ventana
-        document.getElementById('gap-en').value = AudioEngine.sessionConfig.silenceGap.en;
-        document.getElementById('gap-he').value = AudioEngine.sessionConfig.silenceGap.he;
-        document.getElementById('gap-es').value = AudioEngine.sessionConfig.silenceGap.es;
-        
-        async function cerrarSesion() {
-            const { error } = await window.supabase.auth.signOut();
-            if (!error) {
-                window.location.href = 'login.html';
-            } else {
-                alert("Error al cerrar sesión: " + error.message);
+                icon.className = 'fas fa-play'; // Cambia el icono a PLAY
+                // Detener todos los audios
+                Object.values(audios).forEach(a => {
+                    a.pause();
+                    a.currentTime = 0;
+                });
             }
         }
     </script>

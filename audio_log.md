@@ -1,13 +1,33 @@
 # Bitácora de Activos de Audio - Ecosistema de Idiomas
-
+secret removed
 Este archivo registra las configuraciones exactas utilizadas en las plataformas de IA para la generación de los bloques de audio del sistema.
 
 ## 🌐 Idioma: Inglés (Target)
 
 | Archivo Final | Plataforma | Actor / Voz | Configuración Específica | Fecha | Estado / Notas |
-Formato para: 
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `en_milo_rvcr_P1_v1.mp3` | Revoicer = rvcr | "Milo" (English - US - Playful yet polished, perfect for animated characters, family-friendly storytelling, and lively cartoon adventures.) | Velocidad: 1.0x <br>Tono: Profesional / Serio <br>Pausas: 1.5s manuales entre líneas. | 16/06/2026 | **Activo.** Sonido limpio, buena cadencia en frases largas. |
+Formato para archivo de audio:
+# idioma_genero_nombre_plataforma_proyecto#_versión#.formato de audio(mp3, wav, etc 
+    1- Idioma- formato de dos letras:
+        en = english
+        es = español
+        pt = português
+        he = hebreo
+        de = Alemán o Deutsche
+        etc.
+    2- Gender
+        m = Masculino
+        f = Femenino
+    3- nombre del actor
+    4- Herramienta o plataforma
+        rvcr = revoicer.ai
+        clnv = clonevoice.ia
+        11lbs = elevenlabs
+        etc.
+    5- Proyecto # (puede ses cualquier letra del abecedario mas número)
+        En el archivo de productos como por ejemplo las frases de Erik son el primer proyecto o la primera producción, en todos los idiomas, entonces esto lo unifica pues al ver este codigo sabremos que todos los audios son de lo mismo.
+    6- Version# = si hay algunos cambios pequeños va a cambiar a 2 y así sucesivamente.
+
+| `en_m_milo_rvcr_P1_v1.mp3` | Revoicer = rvcr | "Milo" (English - US - Playful yet polished, perfect for animated characters, family-friendly storytelling, and lively cartoon adventures.) | Velocidad: 1.0x <br>Tono: Profesional / Serio <br>Pausas: 1.5s manuales entre líneas. | 16/06/2026 | **Activo.** Sonido limpio, buena cadencia en frases largas. |
 
 
 
