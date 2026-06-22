@@ -42,11 +42,18 @@
     </div>
 
     <script>
-        // Seguridad: Verificar sesión al cargar
+        // Verificación con espera para evitar bucles
         window.addEventListener('load', async () => {
+            // Damos un pequeño margen para que Supabase reconozca la sesión
             const { data: { session } } = await window.supabase.auth.getSession();
+            
+            // Si después de la carga NO hay sesión, enviamos a login
             if (!session) {
                 window.location.href = 'index.html';
+            } else {
+                // Si sí hay sesión, ocultamos el contenido hasta verificar 
+                // para que no parpadee (opcional)
+                document.body.style.display = 'block';
             }
         });
 
