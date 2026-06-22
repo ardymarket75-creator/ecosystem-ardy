@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hardyglot - Aprendiendo de Manera Natural</title>
+</head>
+
+<body>
+    <h1>¡Bienvenido a Hardyglot!</h1>
+    <p>Has iniciado sesión correctamente.</p>
+    <script>
+        // Verificamos si hay sesión activa
+        if (!localStorage.getItem('supabase.auth.token')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
