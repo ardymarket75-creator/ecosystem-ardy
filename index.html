@@ -97,6 +97,7 @@
     </div>
 
     <script>
+        // 1. Funciones de inicio de sesión
         async function iniciarConGoogle() {
             const { data, error } = await window.supabase.auth.signInWithOAuth({
                 provider: 'google',
@@ -113,25 +114,23 @@
             if (error) alert("Error: " + error.message);
             else alert("¡Revisa tu correo!");
         }
-        // Este script detecta automáticamente el token de la URL y lo procesa
-        window.onload = function () {
-            // Si la URL contiene un token (hash), Supabase lo captura automáticamente
-            // al inicializar la sesión. Solo necesitamos asegurarnos de que la 
-            // librería de Supabase esté cargada.
-        };
-        // 1. Escuchar cambios de estado en tiempo real
+
+        // 2. Escuchar cambios de sesión
         supabase.auth.onAuthStateChange((event, session) => {
             if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
                 window.location.href = 'dashboard.html';
             }
         });
 
-        // 2. Verificar si ya hay sesión al cargar (por si el evento ya pasó)
+        // 3. Verificación con espera (Evita el parpadeo/flickering)
         window.addEventListener('load', async () => {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                window.location.href = 'dashboard.html';
-            }
+            // Damos 800ms para que Supabase reconozca la sesión existente
+            setTimeout(async () => {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (session) {
+                    window.location.href = 'dashboard.html';
+                }
+            }, 800);
         });
     </script>
 </body>

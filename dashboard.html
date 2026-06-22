@@ -42,21 +42,22 @@
     </div>
 
     <script>
-        // Verificación con espera para evitar bucles
+        // Verificación más robusta
         window.addEventListener('load', async () => {
-            // Damos un pequeño margen para que Supabase reconozca la sesión
-            const { data: { session } } = await window.supabase.auth.getSession();
-            
-            // Si después de la carga NO hay sesión, enviamos a login
-            if (!session) {
-                window.location.href = 'index.html';
-            } else {
-                // Si sí hay sesión, ocultamos el contenido hasta verificar 
-                // para que no parpadee (opcional)
-                document.body.style.display = 'block';
-            }
+            // Esperamos un instante a que la librería de Supabase esté 100% lista
+            setTimeout(async () => {
+                const { data: { session } } = await window.supabase.auth.getSession();
+                
+                if (!session) {
+                    // Si realmente no hay sesión, vamos al login
+                    window.location.href = 'index.html';
+                } else {
+                    // Si hay sesión, todo bien, mostramos el dashboard
+                    document.body.style.display = 'block';
+                }
+            }, 500); // Espera 500ms para evitar el flickering
         });
-
+    
         async function cerrarSesion() {
             await window.supabase.auth.signOut();
             window.location.href = 'index.html';
