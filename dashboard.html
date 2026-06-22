@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Hardyglot - Aprendiendo de Manera Natural</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Hardyglot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Urbanist', sans-serif; background-color: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; max-width: 800px; width: 90%; }
+        h1 { font-size: 40px; margin-bottom: 40px; color: #1f2937; }
+        h1 span { color: #10B981; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { border: 2px solid #E5E7EB; border-radius: 15px; padding: 40px; text-decoration: none; color: #374151; transition: 0.3s; display: block; }
+        .card:hover { border-color: #10B981; background: #f9fafb; transform: translateY(-5px); }
+        .card i { font-size: 50px; color: #3B82F6; margin-bottom: 20px; }
+        .card h2 { margin: 0 0 10px 0; font-size: 24px; }
+    </style>
 </head>
-
 <body>
-    <h1>¡Bienvenido a Hardyglot!</h1>
-    <p>Has iniciado sesión correctamente.</p>
-    <script>
-        // Usamos el evento de estado de autenticación de Supabase
-        window.supabase.auth.onAuthStateChange((event, session) => {
-            if (event === 'SIGNED_IN' || session) {
-                // Usuario autenticado, se queda en el dashboard
-                console.log("Sesión confirmada");
-            } else {
-                // No hay sesión, manda a index
-                window.location.href = 'index.html';
-            }
-        });
-    </script>
+    <div class="container">
+        <h1>Centro de Mando <span>Ardy Academy</span></h1>
+        <div class="grid">
+            <a href="language-lab.html" class="card">
+                <i class="fa-solid fa-language"></i>
+                <h2>Hardyglot</h2>
+                <p>Lecciones de Inglés</p>
+            </a>
+            <a href="https://sites.google.com/view/erikjcarvajal/jazanut" class="card">
+                <i class="fa-solid fa-book-tanakh"></i>
+                <h2>Sidur / Jazanut</h2>
+                <p>Tefilah y Liturgia</p>
+            </a>
+        </div>
+    </div>
 </body>
-
 </html>
