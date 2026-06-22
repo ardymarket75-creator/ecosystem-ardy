@@ -9,6 +9,10 @@
 
     <style>
         body {
+            display: none;
+        }
+
+        body {
             font-family: 'Segoe UI', sans-serif;
             display: flex;
             justify-content: center;
@@ -124,13 +128,15 @@
 
         // 3. Verificación con espera (Evita el parpadeo/flickering)
         window.addEventListener('load', async () => {
-            // Damos 800ms para que Supabase reconozca la sesión existente
             setTimeout(async () => {
-                const { data: { session } } = await supabase.auth.getSession();
+                const { data: { session } } = await window.supabase.auth.getSession();
                 if (session) {
                     window.location.href = 'dashboard.html';
+                } else {
+                    // Si no está logueado, recién ahora mostramos el login
+                    document.body.style.display = 'block';
                 }
-            }, 800);
+            }, 500);
         });
     </script>
 </body>

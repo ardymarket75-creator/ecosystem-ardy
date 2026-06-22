@@ -1,28 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Mando - Hardyglot</title>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
-        body { font-family: 'Urbanist', sans-serif; background-color: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .container { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; max-width: 800px; width: 90%; }
-        h1 { font-size: 40px; margin-bottom: 40px; color: #1f2937; }
-        h1 span { color: #10B981; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .card { border: 2px solid #E5E7EB; border-radius: 15px; padding: 40px; text-decoration: none; color: #374151; transition: 0.3s; display: block; }
-        .card:hover { border-color: #10B981; background: #f9fafb; transform: translateY(-5px); }
-        .card i { font-size: 50px; color: #3B82F6; margin-bottom: 20px; }
-        .card h2 { margin: 0 0 10px 0; font-size: 24px; }
-        .btn-logout { margin-top: 40px; color: #6B7280; cursor: pointer; text-decoration: underline; background: none; border: none; font-size: 14px; }
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 40px;
+            color: #1f2937;
+        }
+
+        h1 span {
+            color: #10B981;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            border: 2px solid #E5E7EB;
+            border-radius: 15px;
+            padding: 40px;
+            text-decoration: none;
+            color: #374151;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .card:hover {
+            border-color: #10B981;
+            background: #f9fafb;
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #3B82F6;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+
+        .btn-logout {
+            margin-top: 40px;
+            color: #6B7280;
+            cursor: pointer;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            font-size: 14px;
+        }
+    </style>
+    <style>
+        body {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Centro de Mando <span>Hardyglot</span></h1>
@@ -44,24 +113,22 @@
     <script>
         // Verificación más robusta
         window.addEventListener('load', async () => {
-            // Esperamos un instante a que la librería de Supabase esté 100% lista
-            setTimeout(async () => {
-                const { data: { session } } = await window.supabase.auth.getSession();
-                
-                if (!session) {
-                    // Si realmente no hay sesión, vamos al login
-                    window.location.href = 'index.html';
-                } else {
-                    // Si hay sesión, todo bien, mostramos el dashboard
-                    document.body.style.display = 'block';
-                }
+            const { data: { session } } = await window.supabase.auth.getSession();
+            if (!session) {
+                window.location.href = 'index.html';
+            } else {
+                // Si hay sesión, recién ahora mostramos el contenido
+                document.body.style.display = 'block';
+            }
+        }
             }, 500); // Espera 500ms para evitar el flickering
         });
-    
+
         async function cerrarSesion() {
             await window.supabase.auth.signOut();
             window.location.href = 'index.html';
         }
     </script>
 </body>
+
 </html>
