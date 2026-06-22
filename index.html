@@ -113,10 +113,24 @@
             if (error) alert("Error: " + error.message);
             else alert("¡Revisa tu correo!");
         }
-        window.supabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_IN') {
-        // Redirigimos a la página de bienvenida
-        window.location.href = 'dashboard.html';
+        // Este script detecta automáticamente el token de la URL y lo procesa
+        window.onload = function () {
+            // Si la URL contiene un token (hash), Supabase lo captura automáticamente
+            // al inicializar la sesión. Solo necesitamos asegurarnos de que la 
+            // librería de Supabase esté cargada.
+        };
+        // 1. Escuchar cambios de estado en tiempo real
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        // 2. Verificar si ya hay sesión al cargar (por si el evento ya pasó)
+        window.addEventListener('load', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                window.location.href = 'dashboard.html';
             }
         });
     </script>
