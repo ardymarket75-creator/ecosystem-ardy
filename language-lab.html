@@ -97,9 +97,28 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
-            margin: 10% auto;
+            margin: 8% auto;
             width: 80%;
             max-width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .btn-close-modal {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .btn-close-modal:hover {
+            color: #e74c3c;
         }
 
         .lang-he-trans {
@@ -167,6 +186,7 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
+            <button class="btn-close-modal" onclick="cerrarModal()" title="Cerrar">✕</button>
             <h3>Configuración General</h3>
             <p><strong>Audios a reproducir:</strong></p>
             <button onclick="toggleLang('en', this)">Inglés</button>
@@ -196,7 +216,9 @@
                 onchange="AudioEngine.sessionConfig.silenceGap.es = parseFloat(this.value)">
 
             <br><br>
-            <button onclick="document.getElementById('modal').style.display='none'">Cerrar</button>
+            <div style="text-align:center;">
+                <button onclick="cerrarModal()">Cerrar</button>
+            </div>
         </div>
     </div>
     <script src="js/engine.js"></script>
@@ -279,7 +301,18 @@
         document.getElementById('gap-en').value = AudioEngine.sessionConfig.silenceGap.en;
         document.getElementById('gap-he').value = AudioEngine.sessionConfig.silenceGap.he;
         document.getElementById('gap-es').value = AudioEngine.sessionConfig.silenceGap.es;
-        
+
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Cierra el modal si se hace click fuera del cuadro de configuración
+        document.getElementById('modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                cerrarModal();
+            }
+        });
+
         async function cerrarSesion() {
             const { error } = await window.supabase.auth.signOut();
             if (!error) {
