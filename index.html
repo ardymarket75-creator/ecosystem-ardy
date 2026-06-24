@@ -1,56 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Hardyglot - Tu camino a la fluidez</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
-
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #f0f2f5;
+            background: linear-gradient(135deg, #1b7a63 0%, #6c5ce7 100%);
             margin: 0;
         }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
         .box {
             background: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             text-align: center;
-            position: relative;
             width: 90%;
             max-width: 400px;
         }
-
-        .btn-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-            color: #999;
-        }
-
+        h1 { color: #1b7a63; margin-bottom: 10px; }
+        p { color: #666; }
         .btn-google {
             padding: 12px 24px;
             background: #4285f4;
@@ -60,81 +35,119 @@
             cursor: pointer;
             margin-top: 20px;
             width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
         }
-
+        .btn-google:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+        }
         input {
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 10px 0;
-            width: 80%;
+            width: 100%;
+            max-width: 250px;
+            font-family: 'Poppins', sans-serif;
         }
-
+        input:focus {
+            outline: none;
+            border-color: #1b7a63;
+            box-shadow: 0 0 0 3px rgba(27, 122, 99, 0.1);
+        }
         .btn-magic {
             padding: 10px 20px;
-            background: #27ae60;
+            background: #1b7a63;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .btn-magic:hover {
+            background: #146351;
+        }
+        .loading {
+            color: #1b7a63;
+            font-weight: 600;
+            display: none;
         }
     </style>
 </head>
-
 <body>
-    <div class="box">
-        <h1>Bienvenido a Hardyglot</h1>
-        <p>Habla Idiomas de Manera Natural y Acelerada</p>
+    <div class="box" id="loginBox">
+        <h1>🎨 Hardyglot</h1>
+        <p>Tu camino a la fluidez</p>
 
-        <button class="btn-google" onclick="iniciarConGoogle()">Acceder con Google</button>
+        <button class="btn-google" onclick="iniciarConGoogle()">🔵 Acceder con Google</button>
 
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
 
         <p>O ingresa con tu correo:</p>
-        <input type="email" id="email" placeholder="Tu correo electrónico">
+        <input type="email" id="email" placeholder="tu@email.com">
         <br>
         <button class="btn-magic" onclick="iniciarSesion()">Enviar enlace mágico</button>
+
+        <div class="loading" id="loading">Procesando...</div>
     </div>
 
     <script>
-        // 1. Funciones de inicio de sesión
         async function iniciarConGoogle() {
+            document.getElementById('loading').style.display = 'block';
             const { data, error } = await window.supabase.auth.signInWithOAuth({
                 provider: 'google',
             });
-            if (error) alert("Error al entrar con Google: " + error.message);
+            if (error) {
+                alert("Error: " + error.message);
+                document.getElementById('loading').style.display = 'none';
+            }
         }
 
         async function iniciarSesion() {
             const email = document.getElementById('email').value;
+            if (!email) {
+                alert("Por favor ingresa tu correo");
+                return;
+            }
+            document.getElementById('loading').style.display = 'block';
             const { data, error } = await window.supabase.auth.signInWithOtp({
                 email: email,
                 options: { emailRedirectTo: window.location.origin }
             });
-            if (error) alert("Error: " + error.message);
-            else alert("¡Revisa tu correo!");
+            if (error) {
+                alert("Error: " + error.message);
+                document.getElementById('loading').style.display = 'none';
+            } else {
+                alert("¡Revisa tu correo!");
+                document.getElementById('email').value = '';
+                document.getElementById('loading').style.display = 'none';
+            }
         }
 
-        // 2. Escuchar cambios de sesión
-        supabase.auth.onAuthStateChange((event, session) => {
+        // Escuchar cambios de sesión
+        window.supabase.auth.onAuthStateChange((event, session) => {
             if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
-                window.location.href = 'dashboard.html';
+                if (session) {
+                    window.location.href = 'language-lab.html';
+                }
             }
         });
 
-        // 3. Verificación con espera (Evita el parpadeo/flickering)
+        // Verificar si ya está logueado
         window.addEventListener('load', async () => {
-            setTimeout(async () => {
-                const { data: { session } } = await window.supabase.auth.getSession();
-                if (session) {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    // Si no está logueado, recién ahora mostramos el login
-                    document.body.style.display = 'block';
-                }
-            }, 500);
+            const { data: { session } } = await window.supabase.auth.getSession();
+            if (session) {
+                window.location.href = 'language-lab.html';
+            }
+        });
+
+        // Enter para enviar magic link
+        document.getElementById('email').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') iniciarSesion();
         });
     </script>
 </body>
-
 </html>
