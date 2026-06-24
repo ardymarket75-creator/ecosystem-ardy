@@ -15,9 +15,12 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
+            --color-1: #1b7a63;        /* Primary - Verde */
+            --color-2: #e74c3c;        /* Accent - Coral */
+            --color-3: #6c5ce7;        /* Hebrew - Púrpura */
+            --color-4: #2196f3;        /* Secondary - Azul */
+            --color-5: #f39c12;        /* Highlight - Naranja */
             --color-primary: #1b7a63;
-            --color-secondary: #2196f3;
-            --color-accent: #e74c3c;
             --color-hebrew: #6c5ce7;
             --color-bg: #f8f9fa;
             --color-text: #1a1a1a;
@@ -208,19 +211,34 @@
         }
 
         // ==================
-        // TEFILOT DATA
+        // TEFILOT DATA (25 Blessings)
         // ==================
         const tefilot = [
             { text: "מוֹדָה אֲנִי לְפָנֶיךָ מֶלֶךְ חַי וְקַיָּם שֶׁהֶחֱזַרְתָּ בִּי נִשְׁמָתִי בְחֶמְלָה, רַבָּה אֱמוּנָתֶךָ׃", src: "https://www.dropbox.com/scl/fi/rjsozqokdglt9n2ubwf4b/1-Mode-ani.mp3?rlkey=k8nkxorhoabit85q70zrpionv&st=hqsxahdg&raw=1" },
             { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל נְטִילַת יָדָיִם:", src: "https://www.dropbox.com/scl/fi/ief210ryka3h8pahth166/2-Netilat.mp3?rlkey=yoygn44nagx4cczj3qew9hwde&st=pr39rxar&raw=1" },
-            { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר יָצַר אֶת הָאָדָם בְּחָכְמָה, וּבָרָא בוֹ נְקָבִים נְקָבִים, חֲלוּלִים חֲלוּלִים...", src: "https://www.dropbox.com/scl/fi/vcn4lgai5pbv8ylx8lkew/3-Asher-Yatsar.mp3?rlkey=vd227wz0u6tm94qxxalkjim1u&st=2c10knna&raw=1" },
-            { text: "אֱלֹהַי, נְשָׁמָה שֶׁנָּתַתָּ בִּי טְהוֹרָה, אַתָּה בְרָאתָהּ, אַתָּה יְצַרְתָּהּ...", src: "https://www.dropbox.com/scl/fi/0trd49yx3ic32zkarktmg/4-Elohai.mp3?rlkey=31nzufxnq9izmq7rnckzqe8t0&st=pmkx88ou&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר יָצַר אֶת הָאָדָם בְּחָכְמָה, וּבָרָא בוֹ נְקָבִים נְקָבִים, חֲלוּלִים חֲלוּלִים, גָּלוּי וְיָדוּעַ לִפְנֵי כִסֵּא כְבוֹדֶךָ...", src: "https://www.dropbox.com/scl/fi/vcn4lgai5pbv8ylx8lkew/3-Asher-Yatsar.mp3?rlkey=vd227wz0u6tm94qxxalkjim1u&st=2c10knna&raw=1" },
+            { text: "אֱלֹהַי, נְשָׁמָה שֶׁנָּתַתָּ בִּי טְהוֹרָה, אַתָּה בְרָאתָהּ, אַתָּה יְצַרְתָּהּ, אַתָּה נְפַחְתָּהּ בִּי, וְאַתָּה מְשַׁמְּרָהּ בְּקִרְבִּי...", src: "https://www.dropbox.com/scl/fi/0trd49yx3ic32zkarktmg/4-Elohai.mp3?rlkey=31nzufxnq9izmq7rnckzqe8t0&st=pmkx88ou&raw=1" },
             { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, הַנוֹתֵן לַשֶּׂכְוִי בִינָה, לְהַבְחִין בֵּין יוֹם וּבֵין לָיְלָה:", src: "https://www.dropbox.com/scl/fi/ch6ledsbuss1vnjrer89q/5-Lasejvi.mp3?rlkey=alqha27oojtny1i9tn9ki6ugn&st=e55p8bvd&raw=1" },
             { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם פּוֹקֵחַ עִוְרִים׃", src: "https://www.dropbox.com/scl/fi/g53vf2l2ta1apu2npldho/6-Pokeaj-Ivrim.mp3?rlkey=7owhp9tjulsdfj61g83qc4t7h&st=ljh0ylqi&raw=1" },
             { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם מַתִּיר אֲסוּרִים׃", src: "https://www.dropbox.com/scl/fi/uhhzbh9yme0aw44fs3ymz/7-Matir-asurim.mp3?rlkey=ywp18is288ii0yk9qhm8lse7n&st=xvso4wqr&raw=1" },
             { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם זוֹקֵף כְּפוּפִים׃", src: "https://www.dropbox.com/scl/fi/6ywwrbds9mz6dthy3xg2s/8-zokef-kefufim.mp3?rlkey=n0am2plntmiu3hsd99rdwh529&st=dod2yai6&raw=1" },
             { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם מַלְבִּישׁ עֲרֻמִּים׃", src: "https://www.dropbox.com/scl/fi/5avr01titjsh6em2l4kv0/9-malbish-arumim.mp3?rlkey=z116nxzqrywgip6snimzortk5&st=s4oli02l&raw=1" },
-            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַנּוֹתֵן לַיָּעֵף כֹּחַ׃", src: "https://www.dropbox.com/scl/fi/p2gy4b0jpbip8gsk6yyqq/10-Layaef-koaj.mp3?rlkey=77eobp7lfxi5cbs996c7glwus&st=24nrs9d1&raw=1" }
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַנּוֹתֵן לַיָּעֵף כֹּחַ׃", src: "https://www.dropbox.com/scl/fi/p2gy4b0jpbip8gsk6yyqq/10-Layaef-koaj.mp3?rlkey=77eobp7lfxi5cbs996c7glwus&st=24nrs9d1&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם רוֹקַע הָאָרֶץ עַל הַמָּיִם׃", src: "https://www.dropbox.com/scl/fi/ajth4m8b00ey834wdj4ji/11-Rokah-ha-arets.mp3?rlkey=gm4cibz8runvjslyy2chfdniv&st=f15j0wo5&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַמֵּכִין מִצְעֲדֵי גָבֶר׃", src: "https://www.dropbox.com/scl/fi/qx069l1h43m1k10px39ku/12-hamejin.mp3?rlkey=gg7gcf3woq6d26gxst4jm438r&st=0u4r3gem&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁעָשָׂה לִי כָּל צָרְכִּי׃", src: "https://www.dropbox.com/scl/fi/g3pjr6lz87mcccx0bwvgr/13-kol-tsorki.mp3?rlkey=w4a57xlghnbreu0s4naunssmu&st=khu98wqc&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אוֹזֵר יִשְׂרָאֵל בִּגְבוּרָה׃", src: "https://www.dropbox.com/scl/fi/suecqg0iyr0gff6t0jnk0/14-Bigvurah.mp3?rlkey=sbsjnllnhb7skm689tqq4egfo&st=5e83rtu3&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם עוֹטֵר יִשְׂרָאֵל בְּתִפְאָרָה׃", src: "https://www.dropbox.com/scl/fi/0wf0or5sfrme8n9hyek0i/15-Betifarah.mp3?rlkey=bplmfx9yw2habqay6mglee0rt&st=cy67bx0v&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁלֹּא עָשַׂנִי גּוֹי׃", src: "https://www.dropbox.com/scl/fi/s92hanf3n7tueeehjh1ar/16-Goy.mp3?rlkey=vk4ktqn8jsbmg5vjrsut5l6fg&st=agc11pjl&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁלֹּא עָשַׂנִי עָבֶד׃", src: "https://www.dropbox.com/scl/fi/ycu83ficqxr6i06s80rs7/17-Aved.mp3?rlkey=xobdn0cjzqp8958yrkxgkg5nb&st=5xj4kn6n&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁלֹּא עָשַׂנִי אִשָּׁה׃ (האשה מברכת בלי שם ומלכות: בָּרוּךְ שֶׁעָשַׂנִי כִּרְצוֹנוֹ)", src: "https://www.dropbox.com/scl/fi/oa7vfta0j2c6s789z3ckl/18-Isha.mp3?rlkey=y3tj43lcgunafn5y6gp6pbzxl&st=podp7fbh&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, הַמַּעֲבִיר חֶבְלֵי שֵׁנָה מֵעֵינָי וּתְנוּמָה מֵעַפְעַפָּי׃", src: "https://www.dropbox.com/scl/fi/8te2ol0ghp3cd79y2aais/19-hama-avir.mp3?rlkey=go6pk7o25m7vjslb39c1gnktv&st=fobtz3qq&raw=1" },
+            { text: "וִיהִי רָצוֹן מִלְּפָנֶיךָ יְהֹוָה אֱלֹהֵינוּ וֵאלֹהֵי אֲבוֹתֵינוּ שֶׁתַּרְגִּילֵנוּ בְּתוֹרָתֶךָ וְדַבְּקֵנוּ בְּמִצְוֹתֶיךָ...", src: "https://www.dropbox.com/scl/fi/ern1u78vfi3s5pyrd0bvb/20-vihi-ratson.mp3?rlkey=1e6dt112ohxn8b8pbv97lv5z2&st=sk2zf38h&raw=1" },
+            { text: "יְהִי רָצוֹן מִלְּפָנֶיךָ יְהֹוָה, אֱלֹהַי וֵאלֹהֵי אֲבוֹתַי, שֶׁתַּצִּילֵנִי הַיּוֹם וּבְכָל יוֹם וָיוֹם, מֵעַזֵּי פָנִים, וּמֵעַזּוּת פָּנִים...", src: "https://www.dropbox.com/scl/fi/fvg7qoh6wc2izjoowxy1g/21-Yehi-Ratson.mp3?rlkey=ulgthcwi5ipl47cd0nvkf9sc0&st=ukafipk5&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל דִּבְרֵי תוֹרָה:", src: "https://www.dropbox.com/scl/fi/m377om6q7hbjd9obo3m0h/22-Al-divre-Torah.mp3?rlkey=vuomc3r0s5lyepfl41946c9mh&st=24zcpfcb&raw=1" },
+            { text: "וְהַעֲרֵב נָא, יְהֹוָה אֱלֹהֵֽינוּ, אֶת־דִּבְרֵי תוֹרָתְךָ בְּפִינוּ וּבְפִיפִיּוֹת עַמְּךָ בֵּית יִשְׂרָאֵל...", src: "https://www.dropbox.com/scl/fi/suecqg0iyr0gff6t0jnk0/23-Vehaarev-na.mp3?rlkey=me2heodiwvmnro2rvv10396qg&st=m4mm5e6j&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר בָּחַר בָּנוּ מִכָּל־הָעַמִּים וְנָתַן לָנוּ אֶת־תּוֹרָתוֹ.", src: "https://www.dropbox.com/scl/fi/wxtitwb242u9gqc8lopd0/24-Asher-Bajar-banu.mp3?rlkey=jd02hzneg591cg7tb8ep19vcz&st=5ycmer6f&raw=1" },
+            { text: "וַיְדַבֵּ֥ר יְהֹוָ֖ה אֶל־מֹשֶׁ֥ה לֵּאמֹֽר׃ דַּבֵּ֤ר אֶֽל־אַהֲרֹן֙ וְאֶל־בָּנָ֣יו... יְבָרֶכְךָ֥ יְהֹוָ֖ה וְיִשְׁמְרֶֽךָ׃", src: "https://www.dropbox.com/scl/fi/v0d5hgttkpwtvx9htbk6g/25-Yevarejejah.mp3?rlkey=765ll653fs5zdd73u1nsznu5o&st=3n1ymes8&raw=1" }
         ];
 
         // ==================
