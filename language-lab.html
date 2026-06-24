@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Lab - Hardyglot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Heebo:wght@400;500;600&family=David+Libre:wght@400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700&family=Noto+Sans:wght@400;500;600&family=Alef:wght@400;700&family=Playpen+Sans+Hebrew:wght@400;500;600&family=Rubik+Scribble:wght@400&family=Fredoka:wght@400;500;600&family=Gveret+Levin:wght@400&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=Bona+Nova:wght@400;700&family=Cousine:wght@400;700&family=Cardo:wght@400;700&family=Suez+One:wght@400&family=Varela+Round:wght@400&family=Amatic+SC:wght@400;700&family=Solitreo:wght@400&family=Noto+Rashi+Hebrew:wght@400&family=Secular+One:wght@400&family=Karantina:wght@400;700&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Lora:wght@400;600&family=Libre+Baskerville:wght@400;700&family=EB+Garamond:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Heebo:wght@400;500;600&family=David+Libre:wght@400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700&family=Noto+Sans:wght@400;500;600&family=Alef:wght@400;700&family=Playpen+Sans+Hebrew:wght@400;500;600&family=Rubik+Scribble:wght@400&family=Fredoka:wght@400;500;600&family=Gveret+Levin:wght@400&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=Bona+Nova:wght@400;700&family=Cousine:wght@400;700&family=Cardo:wght@400;700&family=Suez+One:wght@400&family=Varela+Round:wght@400&family=Amatic+SC:wght@400;700&family=Solitreo:wght@400&family=Noto+Rashi+Hebrew:wght@400&family=Secular+One:wght@400&family=Karantina:wght@400;700&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Lora:wght@400;600&family=Libre+Baskerville:wght@400;700&family=EB+Garamond:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -19,90 +23,560 @@
             --font-primary: 'Poppins', sans-serif;
             --font-size-base: 16px;
         }
-        * { box-sizing: border-box; }
-        body { font-family: var(--font-primary); background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 10px; font-size: var(--font-size-base); }
-        .card { background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 90%; max-width: 480px; padding: 30px 35px; position: relative; }
-        .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; gap: 10px; }
-        .btn-icon { border: none; background: none; cursor: pointer; font-size: 18px; color: var(--color-2); width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; }
-        .btn-icon.gear { color: #bbb; }
-        .btn-icon.gear:hover { color: var(--color-1); }
-        .contador { font-weight: 600; color: #444; font-size: 15px; flex: 1; text-align: center; }
-        .frase-box { min-height: 80px; display: flex; align-items: center; justify-content: center; padding: 10px 6px; position: relative; }
-        .target-en { font-size: 26px; font-weight: 700; color: #1b7a63; line-height: 1.25; transition: filter 0.3s, opacity 0.3s; }
-        .target-en.hidden { filter: blur(8px); opacity: 0.5; }
-        .lang-he { font-size: 26px; font-weight: bold; color: var(--color-3); direction: rtl; line-height: 1.9; transition: filter 0.3s, opacity 0.3s; }
-        .lang-he.hidden { filter: blur(8px); opacity: 0.5; }
-        .lang-es { font-size: 16px; color: #444; line-height: 1.2; transition: filter 0.3s, opacity 0.3s; }
-        .lang-es.hidden { filter: blur(8px); opacity: 0.5; }
-        .lang-es.oculto { display: none; }
-        .word { cursor: pointer; border-radius: 4px; padding: 0 1px; transition: background 0.15s; }
-        .word:hover { background: #f0eee4; }
-        .lang-he-trans { font-size: 14px; color: #95a5a6; font-style: italic; transition: filter 0.3s, opacity 0.3s; }
-        .lang-he-trans.hidden { filter: blur(8px); opacity: 0.5; }
-        .phrase-play-btn { background: var(--color-2); color: white; border: none; width: 18px; height: 18px; border-radius: 50%; cursor: pointer; font-size: 8px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s; margin: 0 4px; }
-        .phrase-play-btn:hover { background: #c0392b; }
-        .progress-row { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 13px; color: #888; padding: 6px 2px; flex-wrap: wrap; }
-        .btn-dominada { background: none; border: none; color: #999; cursor: pointer; text-decoration: underline; font-size: 13px; transition: color 0.2s; white-space: nowrap; }
-        .btn-dominada:hover { color: var(--color-1); }
-        .stars i { font-size: 13px; margin-left: 2px; }
-        .stars i.fas { color: #27ae60; } /* Verde cuando completa */
-        .stars i.far { color: var(--color-2); } /* Coral cuando vacío */
-        .he-utility-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
-        .nikud-toggle, .español-toggle { border: none; background: none; cursor: pointer; color: var(--color-1); font-size: 12px; display: flex; align-items: center; gap: 4px; transition: font-weight 0.2s; }
-        .nikud-toggle.activo, .español-toggle.activo { font-weight: 700; }
-        .divider { height: 2px; background: #ececec; margin: 14px 0; border-radius: 2px; }
-        .controls-row { display: flex; justify-content: center; align-items: center; gap: 26px; margin: 22px 0 6px; position: relative; }
-        .btn-nav { background: white; border: 2px solid var(--color-2); color: var(--color-2); width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; transition: all 0.2s; }
-        .btn-nav:hover { background: #fdecea; transform: scale(1.05); }
-        .btn-play { background: var(--color-1); color: white; border: none; width: 62px; height: 62px; border-radius: 50%; cursor: pointer; font-size: 20px; transition: all 0.2s; }
-        .btn-play:hover { background: #146351; transform: scale(1.05); }
-        .btn-play.playing { background: var(--color-2); }
-        .btn-design-toggle { position: absolute; bottom: 20px; right: 20px; background: none; border: none; color: #e0e0e0; cursor: pointer; font-size: 20px; opacity: 0.6; transition: opacity 0.2s, color 0.2s; }
-        .btn-design-toggle:hover { opacity: 1; color: #d0d0d0; }
-        .config-popup { display: none; position: absolute; top: 46px; right: 10px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.18); padding: 14px 16px; width: 200px; text-align: left; z-index: 50; border: 1px solid #eee; }
-        .config-popup.he-popup { top: 38px; }
-        .config-popup h4 { margin: 0 0 10px 0; font-size: 14px; color: #333; display: flex; justify-content: space-between; align-items: center; }
-        .btn-close-popup { border: none; background: none; color: #aaa; cursor: pointer; font-size: 16px; }
-        .btn-close-popup:hover { color: var(--color-2); }
-        .config-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 12px; color: #555; gap: 8px; }
-        .config-row label { flex: 1; }
-        .config-row input { width: 50px; padding: 4px; border: 1px solid #ddd; border-radius: 4px; font-size: 11px; }
-        .config-toggle, .velocity-slider { border: 1px solid #ddd; background: #f7f7f7; color: #777; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 11px; transition: all 0.2s; }
-        .config-toggle.activo { background: var(--color-1); border-color: var(--color-1); color: white; font-weight: 700; }
-        .velocity-slider { width: 100%; padding: 4px; border: 1px solid #ddd; }
-        .design-panel { display: none; position: fixed; bottom: 80px; right: 20px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 20px; width: 300px; max-height: 80vh; overflow-y: auto; z-index: 1000; }
-        .design-panel.visible { display: block; }
-        .design-panel h3 { margin: 0 0 15px 0; font-size: 16px; color: #333; }
-        .design-row { margin-bottom: 15px; }
-        .design-row label { display: block; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
-        .color-input { width: 100%; height: 36px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; }
-        .font-select { width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; }
-        .font-size-slider { width: 70%; cursor: pointer; }
-        #font-size-display { margin-left: 10px; font-weight: 600; color: var(--color-1); }
-        .btn-close-design { background: none; border: none; font-size: 20px; cursor: pointer; color: #999; transition: color 0.2s; }
-        .btn-close-design:hover { color: var(--color-2); }
-        .btn-fs { background: none; border: 1px solid #ddd; padding: 4px 8px; cursor: pointer; font-size: 14px; color: var(--color-1); border-radius: 4px; transition: all 0.2s; }
-        .btn-fs:hover { background: var(--color-1); color: white; }
-        #fs-display-en, #fs-display-he { margin: 0 10px; font-weight: 600; color: var(--color-1); }
-        .reset-btn { width: 100%; padding: 8px; background: var(--color-1); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; margin-top: 10px; }
-        .reset-btn:hover { background: #146351; }
-        .he-gender-versions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-        .he-gender-col { background: #f9f9f9; padding: 8px; border-radius: 6px; border: 1px solid #eee; }
-        .he-gender-col label { font-size: 11px; font-weight: 600; color: #666; display: block; margin-bottom: 4px; }
-        .he-gender-col .lang-he { font-size: 18px; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+            font-size: var(--font-size-base);
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            width: 90%;
+            max-width: 480px;
+            padding: 30px 35px;
+            position: relative;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--color-2);
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-icon.gear {
+            color: #bbb;
+        }
+
+        .btn-icon.gear:hover {
+            color: var(--color-1);
+        }
+
+        .contador {
+            font-weight: 600;
+            color: #444;
+            font-size: 15px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .frase-box {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 6px;
+            position: relative;
+        }
+
+        .target-en {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1b7a63;
+            line-height: 1.25;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+
+        .target-en.hidden {
+            filter: blur(8px);
+            opacity: 0.5;
+        }
+
+        .lang-he {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--color-3);
+            direction: rtl;
+            line-height: 1.9;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+
+        .lang-he.hidden {
+            filter: blur(8px);
+            opacity: 0.5;
+        }
+
+        .lang-es {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.2;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+
+        .lang-es.hidden {
+            filter: blur(8px);
+            opacity: 0.5;
+        }
+
+        .lang-es.oculto {
+            display: none;
+        }
+
+        .word {
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 0 1px;
+            transition: background 0.15s;
+        }
+
+        .word:hover {
+            background: #f0eee4;
+        }
+
+        .lang-he-trans {
+            font-size: 14px;
+            color: #95a5a6;
+            font-style: italic;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+
+        .lang-he-trans.hidden {
+            filter: blur(8px);
+            opacity: 0.5;
+        }
+
+        .phrase-play-btn {
+            background: var(--color-2);
+            color: white;
+            border: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            margin: 0 4px;
+        }
+
+        .phrase-play-btn:hover {
+            background: #c0392b;
+        }
+
+        .progress-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #888;
+            padding: 6px 2px;
+            flex-wrap: wrap;
+        }
+
+        .btn-dominada {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 13px;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-dominada:hover {
+            color: var(--color-1);
+        }
+
+        .stars i {
+            font-size: 13px;
+            margin-left: 2px;
+        }
+
+        .stars i.fas {
+            color: #27ae60;
+        }
+
+        /* Verde cuando completa */
+        .stars i.far {
+            color: var(--color-2);
+        }
+
+        /* Coral cuando vacío */
+        .he-utility-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nikud-toggle,
+        .español-toggle {
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--color-1);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: font-weight 0.2s;
+        }
+
+        .nikud-toggle.activo,
+        .español-toggle.activo {
+            font-weight: 700;
+        }
+
+        .divider {
+            height: 2px;
+            background: #ececec;
+            margin: 14px 0;
+            border-radius: 2px;
+        }
+
+        .controls-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 26px;
+            margin: 22px 0 6px;
+            position: relative;
+        }
+
+        .btn-nav {
+            background: white;
+            border: 2px solid var(--color-2);
+            color: var(--color-2);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .btn-nav:hover {
+            background: #fdecea;
+            transform: scale(1.05);
+        }
+
+        .btn-play {
+            background: var(--color-1);
+            color: white;
+            border: none;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s;
+        }
+
+        .btn-play:hover {
+            background: #146351;
+            transform: scale(1.05);
+        }
+
+        .btn-play.playing {
+            background: var(--color-2);
+        }
+
+        .btn-design-toggle {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0.6;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .btn-design-toggle:hover {
+            opacity: 1;
+            color: #d0d0d0;
+        }
+
+        .config-popup {
+            display: none;
+            position: absolute;
+            top: 46px;
+            right: 10px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+            padding: 14px 16px;
+            width: 200px;
+            text-align: left;
+            z-index: 50;
+            border: 1px solid #eee;
+        }
+
+        .config-popup.he-popup {
+            top: 38px;
+        }
+
+        .config-popup h4 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-close-popup {
+            border: none;
+            background: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-close-popup:hover {
+            color: var(--color-2);
+        }
+
+        .config-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #555;
+            gap: 8px;
+        }
+
+        .config-row label {
+            flex: 1;
+        }
+
+        .config-row input {
+            width: 50px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .config-toggle,
+        .velocity-slider {
+            border: 1px solid #ddd;
+            background: #f7f7f7;
+            color: #777;
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+
+        .config-toggle.activo {
+            background: var(--color-1);
+            border-color: var(--color-1);
+            color: white;
+            font-weight: 700;
+        }
+
+        .velocity-slider {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .design-panel {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .design-panel.visible {
+            display: block;
+        }
+
+        .design-panel h3 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .design-row {
+            margin-bottom: 15px;
+        }
+
+        .design-row label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .color-input {
+            width: 100%;
+            height: 36px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .font-select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .font-size-slider {
+            width: 70%;
+            cursor: pointer;
+        }
+
+        #font-size-display {
+            margin-left: 10px;
+            font-weight: 600;
+            color: var(--color-1);
+        }
+
+        .btn-close-design {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+        }
+
+        .btn-close-design:hover {
+            color: var(--color-2);
+        }
+
+        .btn-fs {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--color-1);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn-fs:hover {
+            background: var(--color-1);
+            color: white;
+        }
+
+        #fs-display-en,
+        #fs-display-he {
+            margin: 0 10px;
+            font-weight: 600;
+            color: var(--color-1);
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 8px;
+            background: var(--color-1);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            background: #146351;
+        }
+
+        .he-gender-versions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .he-gender-col {
+            background: #f9f9f9;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .he-gender-col label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .he-gender-col .lang-he {
+            font-size: 18px;
+        }
+
         .material-symbols-outlined {
             font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24;
+                'FILL'0,
+                'wght'400,
+                'GRAD'0,
+                'opsz'24;
             display: inline-block;
             line-height: 1;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
         }
-        .controls-row { display: flex; justify-content: center; align-items: center; gap: 26px; margin: 22px 0 6px; position: relative; }
-        .controls-row .btn-nav:first-child { position: absolute; left: 0; }
+
+        .controls-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 26px;
+            margin: 22px 0 6px;
+            position: relative;
+        }
+
+        .controls-row .btn-nav:first-child {
+            position: absolute;
+            left: 0;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
@@ -114,16 +588,19 @@
         checkAuth();
     </script>
 </head>
+
 <body>
     <div class="card">
         <div class="top-bar">
-            <button class="btn-icon" onclick="cerrarSesion()" title="Cerrar sesión"><i class="fas fa-sign-out-alt"></i></button>
+            <button class="btn-icon" onclick="cerrarSesion()" title="Cerrar sesión"><i
+                    class="fas fa-sign-out-alt"></i></button>
             <div style="display: flex; gap: 8px; align-items: center;">
                 <button class="btn-fs" onclick="cambiarFrase(-1)" style="font-size: 16px;">−</button>
                 <span class="contador" id="contador">Cargando...</span>
                 <button class="btn-fs" onclick="cambiarFrase(1)" style="font-size: 16px;">+</button>
             </div>
-            <button class="btn-icon gear" onclick="abrirConfig('en')" title="Config EN"><i class="fas fa-cog"></i></button>
+            <button class="btn-icon gear" onclick="abrirConfig('en')" title="Config EN"><i
+                    class="fas fa-cog"></i></button>
         </div>
 
         <!-- ENGLISH -->
@@ -133,17 +610,27 @@
             </div>
             <div class="progress-row">
                 <span id="rep-counter-en" style="font-size: 12px;">0/5</span>
-                <button class="phrase-play-btn" onclick="playPhrase('en')" title="Play"><i class="fas fa-play"></i></button>
+                <button class="phrase-play-btn" onclick="playPhrase('en')" title="Play"><i
+                        class="fas fa-play"></i></button>
                 <button class="btn-dominada" onclick="marcarDominada('en')">¡Ya!</button>
                 <span class="stars" id="stars-en"></span>
             </div>
             <div class="config-popup" id="config-en">
                 <h4>English <button class="btn-close-popup" onclick="cerrarConfig('en')">✕</button></h4>
-                <div class="config-row"><label>Reps:</label><button class="btn-fs" onclick="adjustReps('en', -1)">−</button><span id="reps-display-en">5</span><button class="btn-fs" onclick="adjustReps('en', 1)">+</button></div>
-                <div class="config-row"><label>Silence:</label><button class="btn-fs" onclick="adjustSilence('en', -0.1)">−</button><span id="silence-display-en">1.3</span><button class="btn-fs" onclick="adjustSilence('en', 0.1)">+</button></div>
-                <div class="config-row"><label>Speed:</label><button class="btn-fs" onclick="adjustSpeed('en', -1)">−</button><span id="speed-display-en">0</span><button class="btn-fs" onclick="adjustSpeed('en', 1)">+</button></div>
-                <div class="config-row"><label>Font Size:</label><button class="btn-fs" onclick="adjustFontSize('en', -1)">−</button><span id="fs-display-en">26</span><button class="btn-fs" onclick="adjustFontSize('en', 1)">+</button></div>
-                <div class="config-row"><label>Text:</label><button class="config-toggle" id="toggle-text-en" onclick="toggleTexto('en')">Show</button></div>
+                <div class="config-row"><label>Reps:</label><button class="btn-fs"
+                        onclick="adjustReps('en', -1)">−</button><span id="reps-display-en">5</span><button
+                        class="btn-fs" onclick="adjustReps('en', 1)">+</button></div>
+                <div class="config-row"><label>Silence:</label><button class="btn-fs"
+                        onclick="adjustSilence('en', -0.1)">−</button><span id="silence-display-en">1.3</span><button
+                        class="btn-fs" onclick="adjustSilence('en', 0.1)">+</button></div>
+                <div class="config-row"><label>Speed:</label><button class="btn-fs"
+                        onclick="adjustSpeed('en', -1)">−</button><span id="speed-display-en">0</span><button
+                        class="btn-fs" onclick="adjustSpeed('en', 1)">+</button></div>
+                <div class="config-row"><label>Font Size:</label><button class="btn-fs"
+                        onclick="adjustFontSize('en', -1)">−</button><span id="fs-display-en">26</span><button
+                        class="btn-fs" onclick="adjustFontSize('en', 1)">+</button></div>
+                <div class="config-row"><label>Text:</label><button class="config-toggle" id="toggle-text-en"
+                        onclick="toggleTexto('en')">Show</button></div>
             </div>
         </div>
         <div class="divider"></div>
@@ -151,8 +638,10 @@
         <!-- HEBREW -->
         <div style="position: relative;">
             <div class="he-utility-row" style="align-items: center;">
-                <button class="nikud-toggle" id="btn-nikud" onclick="toggleNikudCard()" title="Nikud"><i class="fas fa-eye"></i> נקודים</button>
-                <button class="btn-icon gear" onclick="abrirConfig('he')" title="Config HE" style="margin-left: auto;"><i class="fas fa-cog"></i></button>
+                <button class="nikud-toggle" id="btn-nikud" onclick="toggleNikudCard()" title="Nikud"><i
+                        class="fas fa-eye"></i> נקודים</button>
+                <button class="btn-icon gear" onclick="abrirConfig('he')" title="Config HE"
+                    style="margin-left: auto;"><i class="fas fa-cog"></i></button>
             </div>
             <div class="frase-box">
                 <div>
@@ -161,24 +650,40 @@
                 </div>
             </div>
             <div class="he-gender-versions" id="he-gender-versions" style="display: none;">
-                <div class="he-gender-col"><label>Para hombre:</label><div class="lang-he" id="texto-he-m"></div></div>
-                <div class="he-gender-col"><label>Para mujer:</label><div class="lang-he" id="texto-he-f"></div></div>
+                <div class="he-gender-col"><label>Para hombre:</label>
+                    <div class="lang-he" id="texto-he-m"></div>
+                </div>
+                <div class="he-gender-col"><label>Para mujer:</label>
+                    <div class="lang-he" id="texto-he-f"></div>
+                </div>
             </div>
             <div class="progress-row">
                 <span id="rep-counter-he" style="font-size: 12px;">0/5</span>
-                <button class="phrase-play-btn" onclick="playPhrase('he')" title="Play"><i class="fas fa-play"></i></button>
+                <button class="phrase-play-btn" onclick="playPhrase('he')" title="Play"><i
+                        class="fas fa-play"></i></button>
                 <button class="btn-dominada" onclick="marcarDominada('he')">¡Ya!</button>
                 <span class="stars" id="stars-he"></span>
             </div>
             <div class="config-popup he-popup" id="config-he">
                 <h4>Hebrew <button class="btn-close-popup" onclick="cerrarConfig('he')">✕</button></h4>
-                <div class="config-row"><label>Reps:</label><button class="btn-fs" onclick="adjustReps('he', -1)">−</button><span id="reps-display-he">5</span><button class="btn-fs" onclick="adjustReps('he', 1)">+</button></div>
-                <div class="config-row"><label>Silence:</label><button class="btn-fs" onclick="adjustSilence('he', -0.1)">−</button><span id="silence-display-he">1.3</span><button class="btn-fs" onclick="adjustSilence('he', 0.1)">+</button></div>
-                <div class="config-row"><label>Speed:</label><button class="btn-fs" onclick="adjustSpeed('he', -1)">−</button><span id="speed-display-he">0</span><button class="btn-fs" onclick="adjustSpeed('he', 1)">+</button></div>
-                <div class="config-row"><label>Font Size:</label><button class="btn-fs" onclick="adjustFontSize('he', -1)">−</button><span id="fs-display-he">26</span><button class="btn-fs" onclick="adjustFontSize('he', 1)">+</button></div>
-                <div class="config-row"><label>Nikudim:</label><button class="config-toggle activo" id="toggle-nikud-global" onclick="toggleNikudGlobal()">Hide</button></div>
-                <div class="config-row"><label>Transliteration:</label><button class="config-toggle activo" id="toggle-trans" onclick="toggleTrans()">Hide</button></div>
-                <div class="config-row"><label>Text:</label><button class="config-toggle" id="toggle-text-he" onclick="toggleTexto('he')">Show</button></div>
+                <div class="config-row"><label>Reps:</label><button class="btn-fs"
+                        onclick="adjustReps('he', -1)">−</button><span id="reps-display-he">5</span><button
+                        class="btn-fs" onclick="adjustReps('he', 1)">+</button></div>
+                <div class="config-row"><label>Silence:</label><button class="btn-fs"
+                        onclick="adjustSilence('he', -0.1)">−</button><span id="silence-display-he">1.3</span><button
+                        class="btn-fs" onclick="adjustSilence('he', 0.1)">+</button></div>
+                <div class="config-row"><label>Speed:</label><button class="btn-fs"
+                        onclick="adjustSpeed('he', -1)">−</button><span id="speed-display-he">0</span><button
+                        class="btn-fs" onclick="adjustSpeed('he', 1)">+</button></div>
+                <div class="config-row"><label>Font Size:</label><button class="btn-fs"
+                        onclick="adjustFontSize('he', -1)">−</button><span id="fs-display-he">26</span><button
+                        class="btn-fs" onclick="adjustFontSize('he', 1)">+</button></div>
+                <div class="config-row"><label>Nikudim:</label><button class="config-toggle activo"
+                        id="toggle-nikud-global" onclick="toggleNikudGlobal()">Hide</button></div>
+                <div class="config-row"><label>Transliteration:</label><button class="config-toggle activo"
+                        id="toggle-trans" onclick="toggleTrans()">Hide</button></div>
+                <div class="config-row"><label>Text:</label><button class="config-toggle" id="toggle-text-he"
+                        onclick="toggleTexto('he')">Show</button></div>
             </div>
         </div>
         <div class="divider"></div>
@@ -186,8 +691,10 @@
         <!-- SPANISH -->
         <div>
             <div class="he-utility-row">
-                <button class="español-toggle" id="btn-español" onclick="toggleEspanolBlur()" title="Spanish"><i class="fas fa-eye"></i> Español</button>
-                <button class="phrase-play-btn" onclick="playPhrase('es')" title="Play"><i class="fas fa-play"></i></button>
+                <button class="español-toggle" id="btn-español" onclick="toggleEspanolBlur()" title="Spanish"><i
+                        class="fas fa-eye"></i> Español</button>
+                <button class="phrase-play-btn" onclick="playPhrase('es')" title="Play"><i
+                        class="fas fa-play"></i></button>
             </div>
             <div class="frase-box">
                 <div class="lang-es" id="texto-es"></div>
@@ -196,11 +703,14 @@
 
         <!-- CONTROLS -->
         <div class="controls-row">
-            <button class="btn-nav" onclick="window.location.href='dashboard.html'" title="Dashboard"><span class="material-symbols-outlined">home</span></button>
+            <button class="btn-nav" onclick="window.location.href='dashboard.html'" title="Dashboard"><span
+                    class="material-symbols-outlined">home</span></button>
             <button class="btn-nav" onclick="cambiarFrase(-1)"><i class="fas fa-chevron-left"></i></button>
-            <button class="btn-play" id="btn-play" onclick="toggleAudio()"><i class="fas fa-play" id="play-icon"></i></button>
+            <button class="btn-play" id="btn-play" onclick="toggleAudio()"><i class="fas fa-play"
+                    id="play-icon"></i></button>
             <button class="btn-nav" onclick="cambiarFrase(1)"><i class="fas fa-chevron-right"></i></button>
-            <button class="btn-design-toggle" onclick="toggleDesignPanel()" title="Design"><i class="fas fa-palette"></i></button>
+            <button class="btn-design-toggle" onclick="toggleDesignPanel()" title="Design"><i
+                    class="fas fa-palette"></i></button>
         </div>
     </div>
 
@@ -210,65 +720,107 @@
             <h3 style="margin: 0;">🎨 Design Panel</h3>
             <button class="btn-close-design" onclick="toggleDesignPanel()">✕</button>
         </div>
-        
+
         <!-- LANGUAGE TARGETS (FONTS) -->
         <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
             <div class="design-row">
                 <label>Language Target 1 (EN)</label>
-                <input type="color" class="color-input" id="color-en" value="#1b7a63" onchange="updateLanguageColor('en')">
+                <input type="color" class="color-input" id="color-en" value="#1b7a63"
+                    onchange="updateLanguageColor('en')">
             </div>
             <div style="display: flex; gap: 6px; align-items: center; margin-bottom: 8px;">
-                <select class="font-select" id="font-en" onchange="updateLanguageFont('en', this.value)" style="flex: 1; padding: 4px; font-size: 10px;">
-                    <option value="Poppins">Poppins</option><option value="Inter">Inter</option><option value="Merriweather">Merriweather</option>
-                    <option value="Playfair Display">Playfair Display</option><option value="Crimson Text">Crimson Text</option><option value="Lora">Lora</option>
-                    <option value="Libre Baskerville">Libre Baskerville</option><option value="EB Garamond">EB Garamond</option><option value="Raleway">Raleway</option>
-                    <option value="Montserrat">Montserrat</option><option value="Roboto">Roboto</option><option value="Source Sans Pro">Source Sans Pro</option>
+                <select class="font-select" id="font-en" onchange="updateLanguageFont('en', this.value)"
+                    style="flex: 1; padding: 4px; font-size: 10px;">
+                    <option value="Poppins">Poppins</option>
+                    <option value="Inter">Inter</option>
+                    <option value="Merriweather">Merriweather</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Crimson Text">Crimson Text</option>
+                    <option value="Lora">Lora</option>
+                    <option value="Libre Baskerville">Libre Baskerville</option>
+                    <option value="EB Garamond">EB Garamond</option>
+                    <option value="Raleway">Raleway</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Source Sans Pro">Source Sans Pro</option>
                 </select>
-                <button class="btn-fs" onclick="adjustFontSize('en', -1)" style="padding: 2px 4px; font-size: 10px;">−</button>
-                <span id="fs-display-en" style="min-width: 18px; font-size: 10px; font-weight: 600; text-align: center;">26</span>
-                <button class="btn-fs" onclick="adjustFontSize('en', 1)" style="padding: 2px 4px; font-size: 10px;">+</button>
+                <button class="btn-fs" onclick="adjustFontSize('en', -1)"
+                    style="padding: 2px 4px; font-size: 10px;">−</button>
+                <span id="fs-display-en"
+                    style="min-width: 18px; font-size: 10px; font-weight: 600; text-align: center;">26</span>
+                <button class="btn-fs" onclick="adjustFontSize('en', 1)"
+                    style="padding: 2px 4px; font-size: 10px;">+</button>
             </div>
-            
+
             <div class="design-row" style="margin-top: 8px;">
                 <label>Language Target 2 (HE)</label>
                 <input type="color" class="color-input" id="color-3" value="#6c5ce7" onchange="updateColor(3)">
             </div>
             <div style="display: flex; gap: 6px; align-items: center; margin-bottom: 8px;">
-                <select class="font-select" id="font-he" onchange="updateLanguageFont('he', this.value)" style="flex: 1; padding: 4px; font-size: 10px;">
+                <select class="font-select" id="font-he" onchange="updateLanguageFont('he', this.value)"
+                    style="flex: 1; padding: 4px; font-size: 10px;">
                     <!-- Base original -->
-                    <option value="Rubik">Rubik</option><option value="Heebo">Heebo</option><option value="David Libre">David Libre</option>
-                    <option value="Frank Ruhl Libre">Frank Ruhl Libre</option><option value="Noto Sans">Noto Sans</option><option value="Alef">Alef</option>
+                    <option value="Rubik">Rubik</option>
+                    <option value="Heebo">Heebo</option>
+                    <option value="David Libre">David Libre</option>
+                    <option value="Frank Ruhl Libre">Frank Ruhl Libre</option>
+                    <option value="Noto Sans">Noto Sans</option>
+                    <option value="Alef">Alef</option>
                     <!-- Nuevas del usuario -->
-                    <option value="Playpen Sans Hebrew">Playpen Sans Hebrew</option><option value="Rubik Scribble">Rubik Scribble</option>
-                    <option value="Fredoka">Fredoka</option><option value="Gveret Levin">Gveret Levin</option>
-                    <option value="IBM Plex Sans Hebrew">IBM Plex Sans Hebrew</option><option value="Bona Nova">Bona Nova</option>
-                    <option value="Cousine">Cousine</option><option value="Cardo">Cardo</option><option value="Suez One">Suez One</option>
-                    <option value="Varela Round">Varela Round</option><option value="Amatic SC">Amatic SC</option>
-                    <option value="Solitreo">Solitreo</option><option value="Noto Rashi Hebrew">Noto Rashi Hebrew</option>
-                    <option value="Secular One">Secular One</option><option value="Karantina">Karantina</option>
+                    <option value="Playpen Sans Hebrew">Playpen Sans Hebrew</option>
+                    <option value="Rubik Scribble">Rubik Scribble</option>
+                    <option value="Fredoka">Fredoka</option>
+                    <option value="Gveret Levin">Gveret Levin</option>
+                    <option value="IBM Plex Sans Hebrew">IBM Plex Sans Hebrew</option>
+                    <option value="Bona Nova">Bona Nova</option>
+                    <option value="Cousine">Cousine</option>
+                    <option value="Cardo">Cardo</option>
+                    <option value="Suez One">Suez One</option>
+                    <option value="Varela Round">Varela Round</option>
+                    <option value="Amatic SC">Amatic SC</option>
+                    <option value="Solitreo">Solitreo</option>
+                    <option value="Noto Rashi Hebrew">Noto Rashi Hebrew</option>
+                    <option value="Secular One">Secular One</option>
+                    <option value="Karantina">Karantina</option>
                 </select>
-                <button class="btn-fs" onclick="adjustFontSize('he', -1)" style="padding: 2px 4px; font-size: 10px;">−</button>
-                <span id="fs-display-he" style="min-width: 18px; font-size: 10px; font-weight: 600; text-align: center;">26</span>
-                <button class="btn-fs" onclick="adjustFontSize('he', 1)" style="padding: 2px 4px; font-size: 10px;">+</button>
+                <button class="btn-fs" onclick="adjustFontSize('he', -1)"
+                    style="padding: 2px 4px; font-size: 10px;">−</button>
+                <span id="fs-display-he"
+                    style="min-width: 18px; font-size: 10px; font-weight: 600; text-align: center;">26</span>
+                <button class="btn-fs" onclick="adjustFontSize('he', 1)"
+                    style="padding: 2px 4px; font-size: 10px;">+</button>
             </div>
-            
+
             <div class="design-row" style="margin-top: 8px;">
                 <label>Base Language (ES)</label>
-                <input type="color" class="color-input" id="color-base" value="#1b7a63" onchange="updateLanguageColor('es')">
+                <input type="color" class="color-input" id="color-base" value="#1b7a63"
+                    onchange="updateLanguageColor('es')">
             </div>
             <div style="display: flex; gap: 6px; align-items: center;">
-                <select class="font-select" id="font-base" onchange="updateLanguageFont('es', this.value)" style="flex: 1; padding: 4px; font-size: 10px;">
-                    <option value="Poppins">Poppins</option><option value="Inter">Inter</option><option value="Merriweather">Merriweather</option>
-                    <option value="Playfair Display">Playfair Display</option><option value="Lora">Lora</option><option value="Raleway">Raleway</option>
-                    <option value="Montserrat">Montserrat</option><option value="Roboto">Roboto</option><option value="Open Sans">Open Sans</option>
-                    <option value="Crimson Text">Crimson Text</option><option value="Libre Baskerville">Libre Baskerville</option><option value="Source Sans Pro">Source Sans Pro</option>
+                <select class="font-select" id="font-base" onchange="updateLanguageFont('es', this.value)"
+                    style="flex: 1; padding: 4px; font-size: 10px;">
+                    <option value="Poppins">Poppins</option>
+                    <option value="Inter">Inter</option>
+                    <option value="Merriweather">Merriweather</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Lora">Lora</option>
+                    <option value="Raleway">Raleway</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Crimson Text">Crimson Text</option>
+                    <option value="Libre Baskerville">Libre Baskerville</option>
+                    <option value="Source Sans Pro">Source Sans Pro</option>
                 </select>
-                <button class="btn-fs" onclick="adjustFontSize('es', -1)" style="padding: 2px 4px; font-size: 10px;">−</button>
-                <span id="fs-display-base" style="min-width: 18px; font-size: 10px; font-weight: 600; text-align: center;">16</span>
-                <button class="btn-fs" onclick="adjustFontSize('es', 1)" style="padding: 2px 4px; font-size: 10px;">+</button>
+                <button class="btn-fs" onclick="adjustFontSize('es', -1)"
+                    style="padding: 2px 4px; font-size: 10px;">−</button>
+                <span id="fs-display-base"
+                    style="min-width: 18px; font-size: 10px; font-weight: 600; text-align: center;">16</span>
+                <button class="btn-fs" onclick="adjustFontSize('es', 1)"
+                    style="padding: 2px 4px; font-size: 10px;">+</button>
             </div>
         </div>
-        
+
         <!-- COLOR PALETTE -->
         <div class="design-row">
             <label>Primary</label>
@@ -286,10 +838,11 @@
             <label>Highlight</label>
             <input type="color" class="color-input" id="color-5" value="#f39c12" onchange="updateColor(5)">
         </div>
-        
+
         <div style="display: flex; gap: 10px; margin-top: 20px; margin-bottom: 20px;">
             <button class="reset-btn" onclick="resetDesign()" style="flex: 1;">Reset</button>
-            <button class="reset-btn" onclick="toggleDesignPanel()" style="flex: 1; background: var(--color-1);">Close</button>
+            <button class="reset-btn" onclick="toggleDesignPanel()"
+                style="flex: 1; background: var(--color-1);">Close</button>
         </div>
     </div>
 
@@ -314,14 +867,116 @@
 
         const STORAGE_KEY = 'hardyglot_progreso_v3';
 
-        function cargarProgreso() { try { const raw = localStorage.getItem(STORAGE_KEY); if (raw) progreso = JSON.parse(raw); } catch (e) { console.warn('Error cargando progreso:', e); } }
-        function guardarProgreso() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progreso)); } catch (e) { console.warn('Error guardando progreso:', e); } }
+        async function guardarProgreso() {
+            // 1. SIEMPRE guardar en localStorage (caché local)
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(progreso));
+            } catch (e) {
+                console.warn('Error guardando en localStorage:', e);
+            }
+
+            // 2. Si hay conexión, sincronizar con Supabase
+            if (navigator.onLine) {
+                sincronizarConSupabase();
+            }
+        }
+
+        async function sincronizarConSupabase() {
+            if (!window.supabase) return;
+
+            try {
+                const { data: { session } } = await window.supabase.auth.getSession();
+                if (!session) return;
+
+                const user_id = session.user.id;
+
+                for (let lang in progreso) {
+                    for (let id in progreso[lang]) {
+                        const p = progreso[lang][id];
+
+                        const { error } = await window.supabase
+                            .from('progreso')
+                            .upsert({
+                                user_id: user_id,
+                                phrase_id: parseInt(id),
+                                lang: lang,
+                                reps: p.reps || 0,
+                                stars: p.stars || 0,
+                                dominada: p.dominada || false,
+                                updated_at: new Date().toISOString()
+                            }, {
+                                onConflict: 'user_id,phrase_id,lang'
+                            });
+
+                        if (error) console.error('Error sincronizando:', error);
+                    }
+                }
+                console.log('✅ Progreso sincronizado');
+            } catch (err) {
+                console.error('Error en sincronizarConSupabase:', err);
+            }
+        }
+
+        async function cargarProgreso() {
+            if (!window.supabase) return;
+
+            try {
+                const { data: { session } } = await window.supabase.auth.getSession();
+                if (!session) {
+                    const raw = localStorage.getItem(STORAGE_KEY);
+                    if (raw) progreso = JSON.parse(raw);
+                    return;
+                }
+
+                const user_id = session.user.id;
+                const { data, error } = await window.supabase
+                    .from('progreso')
+                    .select('*')
+                    .eq('user_id', user_id);
+
+                if (error) throw error;
+
+                progreso = { en: {}, he: {}, es: {} };
+
+                if (data && data.length > 0) {
+                    data.forEach(row => {
+                        const lang = row.lang;
+                        const id = row.phrase_id.toString();
+                        progreso[lang][id] = {
+                            reps: row.reps,
+                            stars: row.stars,
+                            dominada: row.dominada,
+                            lastStarDate: null
+                        };
+                    });
+                    console.log('✅ Progreso cargado de Supabase');
+                } else {
+                    const raw = localStorage.getItem(STORAGE_KEY);
+                    if (raw) progreso = JSON.parse(raw);
+                }
+            } catch (err) {
+                console.error('Error cargando:', err);
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) progreso = JSON.parse(raw);
+            }
+        }
+
         function getTodayStr() { return new Date().toISOString().slice(0, 10); }
 
         cargarProgreso();
         cargarDiseño();
         loadFontSizes();
         fetch('frases.json').then(r => r.json()).then(d => { frasesActivas = d; actualizarUI(); });
+
+        // Detector de conexión
+        window.addEventListener('online', () => {
+            console.log('✅ Online - sincronizando...');
+            sincronizarConSupabase();
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('⚠️ Offline - guardando localmente');
+        });
 
         function getProgreso(lang) {
             const f = frasesActivas[indice];
@@ -356,14 +1011,14 @@
         function reproducirPalabra(palabra, lang = 'en') {
             const limpio = palabra.replace(/[.,!?¿¡":]/g, '');
             const utterance = new SpeechSynthesisUtterance(limpio);
-            
+
             // Mapear idiomas a códigos TTS
             const langCodes = {
                 'en': 'en-US',
                 'es': 'es-ES',
                 'he': 'he-IL'
             };
-            
+
             utterance.lang = langCodes[lang] || 'en-US';
             speechSynthesis.cancel();
             speechSynthesis.speak(utterance);
@@ -454,7 +1109,7 @@
             const btn = document.getElementById('toggle-text-' + lang);
             btn.classList.toggle('activo', config[lang].textoVisible);
             btn.innerText = config[lang].textoVisible ? 'Hide' : 'Show';
-            
+
             if (lang === 'en') {
                 document.getElementById('texto-en').classList.toggle('hidden', !config[lang].textoVisible);
             } else if (lang === 'he') {
@@ -489,13 +1144,13 @@
             audios[lang].currentTime = start;
             audios[lang].playbackRate = playbackRate;
             audios[lang].play();
-            
+
             // Incrementar solo el contador, no estrellas
             const p = getProgreso(lang);
             p.reps = Math.min(p.reps + 1, config[lang].reps);
             document.getElementById('rep-counter-' + lang).innerText = `${Math.min(p.reps, config[lang].reps)}/${config[lang].reps}`;
             guardarProgreso();
-            
+
             setTimeout(() => audios[lang].pause(), duracion);
         }
 
@@ -518,7 +1173,7 @@
             const display = document.getElementById(displayId);
             let current = parseInt(display.innerText) || 5;
             let newValue = Math.max(1, Math.min(10, current + delta));
-            
+
             config[lang].reps = newValue;
             display.innerText = newValue;
             AudioEngine.sessionConfig.reps[lang] = newValue;
@@ -529,7 +1184,7 @@
             const display = document.getElementById(displayId);
             let current = parseFloat(display.innerText) || 1.3;
             let newValue = Math.max(0, Math.min(3, parseFloat((current + delta).toFixed(1))));
-            
+
             config[lang].intervalo = newValue;
             display.innerText = newValue.toFixed(1);
             AudioEngine.sessionConfig.silenceGap[lang] = newValue;
@@ -540,7 +1195,7 @@
             const display = document.getElementById(displayId);
             let current = parseInt(display.innerText) || 0;
             let newValue = Math.max(-3, Math.min(4, current + delta));
-            
+
             const velocidad = 1 + (newValue * 0.25);
             config[lang].velocidad = newValue;
             audios[lang].playbackRate = Math.max(0.25, Math.min(velocidad, 2));
@@ -552,11 +1207,11 @@
             const currentDisplay = document.getElementById(displayId);
             let current = parseInt(currentDisplay.innerText) || 26;
             let newSize = Math.max(12, Math.min(28, current + delta));
-            
+
             const selector = lang === 'en' ? '.target-en' : lang === 'he' ? '.lang-he' : '.lang-es';
             const elements = document.querySelectorAll(selector);
             elements.forEach(el => el.style.fontSize = `${newSize}px`);
-            
+
             currentDisplay.innerText = newSize;
             localStorage.setItem(`fontSize-${lang}`, newSize);
         }
@@ -586,7 +1241,7 @@
             if (isPlaying) {
                 btn.classList.add('playing');
                 icon.className = 'fas fa-pause';
-                
+
                 // Sincronizar config con AudioEngine
                 AudioEngine.sessionConfig.reps = {
                     en: config.en.reps,
@@ -679,13 +1334,13 @@
             const en = document.querySelector('.target-en');
             let current = en ? parseInt(window.getComputedStyle(en).fontSize) : 26;
             let newSize = Math.max(12, Math.min(30, current + delta));
-            
+
             const selectors = ['.target-en', '.lang-he', '.lang-es', '.target-phrase'];
             selectors.forEach(selector => {
                 const elements = document.querySelectorAll(selector);
                 elements.forEach(el => el.style.fontSize = `${newSize}px`);
             });
-            
+
             localStorage.setItem('design-font-size', newSize);
         }
 
@@ -725,7 +1380,7 @@
                 });
                 document.documentElement.style.setProperty('--font-size-base', `${sizeInt}px`);
             }
-            
+
             // Cargar fuentes por idioma
             const fontEn = localStorage.getItem('design-font-en');
             if (fontEn) {
@@ -733,14 +1388,14 @@
                 const selectEn = document.getElementById('font-en');
                 if (selectEn) selectEn.value = fontEn;
             }
-            
+
             const fontHe = localStorage.getItem('design-font-he');
             if (fontHe) {
                 document.querySelectorAll('.lang-he').forEach(el => el.style.fontFamily = `'${fontHe}', sans-serif`);
                 const selectHe = document.getElementById('font-he');
                 if (selectHe) selectHe.value = fontHe;
             }
-            
+
             // Cargar color idioma base (español)
             const esColor = localStorage.getItem('design-color-es');
             if (esColor) {
@@ -748,14 +1403,14 @@
                 const colorInput = document.getElementById('color-base');
                 if (colorInput) colorInput.value = esColor;
             }
-            
+
             const fontEs = localStorage.getItem('design-font-es');
             if (fontEs) {
                 document.querySelectorAll('.lang-es').forEach(el => el.style.fontFamily = `'${fontEs}', sans-serif`);
                 const selectBase = document.getElementById('font-base');
                 if (selectBase) selectBase.value = fontEs;
             }
-            
+
             const fsEs = localStorage.getItem('fontSize-es');
             if (fsEs) {
                 document.querySelectorAll('.lang-es').forEach(el => el.style.fontSize = fsEs + 'px');
@@ -766,7 +1421,7 @@
         function resetDesign() {
             for (let i = 1; i <= 5; i++) {
                 localStorage.removeItem(`design-color-${i}`);
-                document.getElementById(`color-${i}`).value = ['#1b7a63', '#e74c3c', '#6c5ce7', '#2196f3', '#f39c12'][i-1];
+                document.getElementById(`color-${i}`).value = ['#1b7a63', '#e74c3c', '#6c5ce7', '#2196f3', '#f39c12'][i - 1];
             }
             localStorage.removeItem('design-font');
             localStorage.removeItem('design-font-size');
@@ -780,4 +1435,5 @@
         }
     </script>
 </body>
+
 </html>
