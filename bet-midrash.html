@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bet Midrash - בית מדרש</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --color-primary: #1b7a63;
+            --color-secondary: #2196f3;
+            --color-accent: #e74c3c;
+            --color-hebrew: #6c5ce7;
+            --color-bg: #f8f9fa;
+            --color-text: #1a1a1a;
+            --color-text-light: #666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            padding: 0;
+            margin: 0;
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            background: var(--color-primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            direction: rtl;
+        }
+
+        .top-bar h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .btn-nav {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: var(--color-hebrew);
+            margin-bottom: 20px;
+            font-size: 20px;
+            direction: rtl;
+        }
+
+        .paragraph-wrap {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 28px;
+            line-height: 2;
+            color: var(--color-text);
+        }
+
+        .phrase {
+            cursor: pointer;
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: block;
+            width: fit-content;
+            margin: 12px 0 12px auto;
+            transition: all 0.2s;
+            user-select: none;
+            background: rgba(27, 122, 99, 0.05);
+        }
+
+        .phrase:hover {
+            background: rgba(27, 122, 99, 0.15);
+            font-weight: 600;
+        }
+
+        .phrase.playing {
+            background: var(--color-primary);
+            color: white;
+            font-weight: 700;
+        }
+
+        .hint {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .status {
+            font-size: 12px;
+            color: var(--color-accent);
+            margin-top: 15px;
+            min-height: 18px;
+            direction: ltr;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--color-text-light);
+            font-size: 12px;
+        }
+
+        /* LOADING */
+        .loading-msg {
+            text-align: center;
+            padding: 40px;
+            color: var(--color-text-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div>
+            <button class="btn-nav" onclick="window.location.href='dashboard.html'" title="Dashboard">
+                <i class="fas fa-home"></i> חזור
+            </button>
+            <button class="btn-nav" onclick="cerrarSesion()" style="margin-right: 10px;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+        <h1>בית מדרש</h1>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+        
+        <!-- SHACHARIT (Morning Prayers) -->
+        <div class="section">
+            <h2>שחרית - תפילת הבוקר</h2>
+            <p class="hint">👆 לחץ על כל בברכה כדי להשמע</p>
+            
+            <div class="paragraph-wrap" id="shacharit">
+                <!-- Will be populated by JS -->
+            </div>
+            
+            <div class="status" id="status-shacharit"></div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>בית מדרש - מרכז ללימודי יהדות</p>
+        <p>Bet Midrash - Center for Jewish Studies</p>
+    </div>
+
+    <script>
+        // ==================
+        // AUTHENTICATION
+        // ==================
+        async function checkAuth() {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            const { data } = await window.supabase.auth.getSession();
+            if (!data.session) window.location.href = 'index.html';
+        }
+        checkAuth();
+
+        async function cerrarSesion() {
+            const { error } = await window.supabase.auth.signOut();
+            if (!error) window.location.href = 'index.html';
+            else alert("Error: " + error.message);
+        }
+
+        // ==================
+        // TEFILOT DATA
+        // ==================
+        const tefilot = [
+            { text: "מוֹדָה אֲנִי לְפָנֶיךָ מֶלֶךְ חַי וְקַיָּם שֶׁהֶחֱזַרְתָּ בִּי נִשְׁמָתִי בְחֶמְלָה, רַבָּה אֱמוּנָתֶךָ׃", src: "https://www.dropbox.com/scl/fi/rjsozqokdglt9n2ubwf4b/1-Mode-ani.mp3?rlkey=k8nkxorhoabit85q70zrpionv&st=hqsxahdg&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל נְטִילַת יָדָיִם:", src: "https://www.dropbox.com/scl/fi/ief210ryka3h8pahth166/2-Netilat.mp3?rlkey=yoygn44nagx4cczj3qew9hwde&st=pr39rxar&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר יָצַר אֶת הָאָדָם בְּחָכְמָה, וּבָרָא בוֹ נְקָבִים נְקָבִים, חֲלוּלִים חֲלוּלִים...", src: "https://www.dropbox.com/scl/fi/vcn4lgai5pbv8ylx8lkew/3-Asher-Yatsar.mp3?rlkey=vd227wz0u6tm94qxxalkjim1u&st=2c10knna&raw=1" },
+            { text: "אֱלֹהַי, נְשָׁמָה שֶׁנָּתַתָּ בִּי טְהוֹרָה, אַתָּה בְרָאתָהּ, אַתָּה יְצַרְתָּהּ...", src: "https://www.dropbox.com/scl/fi/0trd49yx3ic32zkarktmg/4-Elohai.mp3?rlkey=31nzufxnq9izmq7rnckzqe8t0&st=pmkx88ou&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהוָֹה, אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, הַנוֹתֵן לַשֶּׂכְוִי בִינָה, לְהַבְחִין בֵּין יוֹם וּבֵין לָיְלָה:", src: "https://www.dropbox.com/scl/fi/ch6ledsbuss1vnjrer89q/5-Lasejvi.mp3?rlkey=alqha27oojtny1i9tn9ki6ugn&st=e55p8bvd&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם פּוֹקֵחַ עִוְרִים׃", src: "https://www.dropbox.com/scl/fi/g53vf2l2ta1apu2npldho/6-Pokeaj-Ivrim.mp3?rlkey=7owhp9tjulsdfj61g83qc4t7h&st=ljh0ylqi&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם מַתִּיר אֲסוּרִים׃", src: "https://www.dropbox.com/scl/fi/uhhzbh9yme0aw44fs3ymz/7-Matir-asurim.mp3?rlkey=ywp18is288ii0yk9qhm8lse7n&st=xvso4wqr&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם זוֹקֵף כְּפוּפִים׃", src: "https://www.dropbox.com/scl/fi/6ywwrbds9mz6dthy3xg2s/8-zokef-kefufim.mp3?rlkey=n0am2plntmiu3hsd99rdwh529&st=dod2yai6&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם מַלְבִּישׁ עֲרֻמִּים׃", src: "https://www.dropbox.com/scl/fi/5avr01titjsh6em2l4kv0/9-malbish-arumim.mp3?rlkey=z116nxzqrywgip6snimzortk5&st=s4oli02l&raw=1" },
+            { text: "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַנּוֹתֵן לַיָּעֵף כֹּחַ׃", src: "https://www.dropbox.com/scl/fi/p2gy4b0jpbip8gsk6yyqq/10-Layaef-koaj.mp3?rlkey=77eobp7lfxi5cbs996c7glwus&st=24nrs9d1&raw=1" }
+        ];
+
+        // ==================
+        // RENDER & AUDIO LOGIC
+        // ==================
+        let currentAudio = null;
+        let currentSpan = null;
+
+        function renderTefilot() {
+            const container = document.getElementById('shacharit');
+            tefilot.forEach((item, idx) => {
+                const span = document.createElement('span');
+                span.className = 'phrase';
+                span.textContent = item.text;
+                span.setAttribute('data-src', item.src);
+                span.setAttribute('data-idx', idx);
+                span.addEventListener('click', playAudio);
+                container.appendChild(span);
+            });
+        }
+
+        function playAudio(e) {
+            const span = e.target;
+            const src = span.getAttribute('data-src');
+
+            // Stop different phrase
+            if (currentSpan && currentSpan !== span) {
+                currentSpan.classList.remove('playing');
+                if (currentAudio) currentAudio.pause();
+                currentAudio = null;
+                currentSpan = null;
+            }
+
+            // Toggle same phrase
+            if (currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                span.classList.remove('playing');
+                document.getElementById('status-shacharit').textContent = '';
+                return;
+            }
+
+            if (currentAudio && currentAudio.paused) {
+                currentAudio.play().catch(() => {
+                    document.getElementById('status-shacharit').textContent = 'Tap again to play.';
+                });
+                span.classList.add('playing');
+                currentSpan = span;
+                return;
+            }
+
+            // Play new audio
+            currentAudio = new Audio(src);
+            currentAudio.onended = () => {
+                span.classList.remove('playing');
+                document.getElementById('status-shacharit').textContent = '';
+            };
+            currentAudio.onerror = () => {
+                span.classList.remove('playing');
+                document.getElementById('status-shacharit').textContent = '❌ Could not load audio.';
+            };
+            currentAudio.play().catch(() => {
+                document.getElementById('status-shacharit').textContent = 'Tap again to play.';
+            });
+            span.classList.add('playing');
+            currentSpan = span;
+        }
+
+        // Load on page load
+        window.addEventListener('load', renderTefilot);
+    </script>
+
+</body>
+</html>
