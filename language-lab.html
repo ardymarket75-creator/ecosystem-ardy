@@ -109,7 +109,7 @@
     <script>
         async function checkAuth() {
             const { data } = await window.supabase.auth.getSession();
-            if (!data.session) window.location.href = 'login.html';
+            if (!data.session) window.location.href = 'index.html';
         }
         checkAuth();
     </script>
@@ -775,7 +775,7 @@
 
         async function cerrarSesion() {
             const { error } = await window.supabase.auth.signOut();
-            if (!error) window.location.href = 'login.html';
+            if (!error) window.location.href = 'index.html';
             else alert("Error: " + error.message);
         }
     </script>
